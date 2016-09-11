@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterAccountViewController" customModule="IMClient" customModuleProvider="target">
+            <connections>
+                <outlet property="checkPasswordTextField" destination="Ta6-9L-RQc" id="Lma-vE-k56"/>
+                <outlet property="passwordTextField" destination="SMI-Cs-xA6" id="hYE-hq-7GG"/>
+                <outlet property="usernameTextField" destination="otL-Iv-Dic" id="C3G-GU-1t2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEo-TR-Gc3">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <connections>
+                        <action selector="bgPressed:" destination="-1" eventType="touchUpInside" id="bl2-Pz-4sJ"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otL-Iv-Dic">
+                    <rect key="frame" x="8" y="23" width="584" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="wle-5V-prr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SMI-Cs-xA6">
+                    <rect key="frame" x="8" y="61" width="584" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="rBT-ph-we9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="check password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-9L-RQc">
+                    <rect key="frame" x="8" y="99" width="584" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="CMQ-yq-5pH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceH-aN-Db4">
+                    <rect key="frame" x="8" y="137" width="584" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="hG3-kw-YBG"/>
+                    </constraints>
+                    <state key="normal" title="commit"/>
+                    <connections>
+                        <action selector="commitButtonPressed:" destination="-1" eventType="touchUpInside" id="mYb-Ge-2VB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BEo-TR-Gc3" secondAttribute="trailing" id="14M-Ef-DOM"/>
+                <constraint firstItem="Ta6-9L-RQc" firstAttribute="top" secondItem="SMI-Cs-xA6" secondAttribute="bottom" constant="8" id="40Y-qg-eed"/>
+                <constraint firstAttribute="trailing" secondItem="SMI-Cs-xA6" secondAttribute="trailing" constant="8" id="708-4E-epI"/>
+                <constraint firstItem="Ta6-9L-RQc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Atc-7q-Z3G"/>
+                <constraint firstAttribute="trailing" secondItem="otL-Iv-Dic" secondAttribute="trailing" constant="8" id="Be9-Tp-VpB"/>
+                <constraint firstItem="SMI-Cs-xA6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="SAi-hd-6lY"/>
+                <constraint firstAttribute="trailing" secondItem="Ta6-9L-RQc" secondAttribute="trailing" constant="8" id="TnY-wO-hUp"/>
+                <constraint firstItem="ceH-aN-Db4" firstAttribute="top" secondItem="Ta6-9L-RQc" secondAttribute="bottom" constant="8" id="ZH1-s5-eKz"/>
+                <constraint firstItem="BEo-TR-Gc3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZcE-Hc-Sk9"/>
+                <constraint firstAttribute="trailing" secondItem="ceH-aN-Db4" secondAttribute="trailing" constant="8" id="bvW-50-qbM"/>
+                <constraint firstItem="otL-Iv-Dic" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="f8V-Yf-8Ip"/>
+                <constraint firstItem="SMI-Cs-xA6" firstAttribute="top" secondItem="otL-Iv-Dic" secondAttribute="bottom" constant="8" id="gYh-hN-elD"/>
+                <constraint firstAttribute="bottom" secondItem="BEo-TR-Gc3" secondAttribute="bottom" id="jS6-VG-npU"/>
+                <constraint firstItem="otL-Iv-Dic" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="kPX-ag-7Tz"/>
+                <constraint firstItem="ceH-aN-Db4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="qTL-gy-P48"/>
+                <constraint firstItem="BEo-TR-Gc3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qVd-TJ-KMq"/>
+            </constraints>
+            <point key="canvasLocation" x="340" y="429"/>
+        </view>
+    </objects>
+</document>
