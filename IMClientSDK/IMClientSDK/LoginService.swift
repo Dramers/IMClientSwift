@@ -9,7 +9,7 @@
 import UIKit
 
 public class LoginService: NSObject {
-    public var loginServerAddress = "http://127.0.0.1:3001/users/"
+    public var loginServerAddress = "http://127.0.0.1:3002/"
     
     public static let shareInstance = LoginService()
     

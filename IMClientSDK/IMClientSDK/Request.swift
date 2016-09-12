@@ -23,6 +23,15 @@ class Request: NSObject {
                 
                 let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
                     
+                    if let httpResponse = response as? NSHTTPURLResponse {
+                        if httpResponse.statusCode < 200 || httpResponse.statusCode >= 300 {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                complete(nil, NSError(domain: "HTTP Error", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey : NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode)]))
+                            });
+                            return
+                        }
+                    }
+                    
                     var err = error
                     var info :[String : AnyObject]? = nil
                     if err == nil {
@@ -30,8 +39,14 @@ class Request: NSObject {
                             let bodyJson = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                             
                             if let code = bodyJson["code"] as? Int {
-                                let msg = bodyJson["msg"] as! String;
-                                err = NSError(domain: "Request", code: code, userInfo: [NSLocalizedDescriptionKey : msg])
+                                
+                                if code > 0 {
+                                    let msg = bodyJson["result"] as! String;
+                                    err = NSError(domain: "Request", code: code, userInfo: [NSLocalizedDescriptionKey : msg])
+                                }
+                                else {
+                                    info = bodyJson["result"] as? [String : AnyObject]
+                                }
                             }
                             else {
                                 info = bodyJson as? [String : AnyObject]
