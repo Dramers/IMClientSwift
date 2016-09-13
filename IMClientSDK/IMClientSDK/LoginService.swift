@@ -20,21 +20,21 @@ public class LoginService: NSObject {
     
     public func login(username: String, password: String, complete: (LoginInfo?, NSError?) -> Void) {
         
-        Request.sendJsonRequest("\(loginServerAddress)login", info: ["username" : username, "password" : password]) { [unowned self] (info: [String : AnyObject]?, error: NSError?)  in
+        Request.sendJsonRequest("\(loginServerAddress)login", info: ["username" : username, "password" : password]) { [unowned self] (info: AnyObject?, error: NSError?)  in
             
             if error == nil && info != nil {
-                self.loginInfo = LoginInfo(loginInfo: info!, password: password)
+                self.loginInfo = LoginInfo(loginInfo: info as! [String : AnyObject], password: password)
             }
             complete(self.loginInfo, error)
         }
     }
     
     public func register(username: String, password: String, name: String, complete: (LoginInfo?, NSError?) -> Void) {
-        Request.sendJsonRequest("\(loginServerAddress)register", info: ["username" : username, "password" : password, "name" : name]) { (info: [String : AnyObject]?, error: NSError?) in
+        Request.sendJsonRequest("\(loginServerAddress)register", info: ["username" : username, "password" : password, "name" : name]) { (info: AnyObject?, error: NSError?) in
             
             var loginInfo: LoginInfo? = nil
             if error == nil && info != nil {
-                loginInfo = LoginInfo(loginInfo: info!, password: password)
+                loginInfo = LoginInfo(loginInfo: info as! [String : AnyObject], password: password)
             }
             complete(loginInfo, error)
         }
@@ -42,6 +42,12 @@ public class LoginService: NSObject {
     
     public func logout() {
         loginInfo = nil
+    }
+    
+    public func searchUsers(keyword: String, complete: (([[String : AnyObject]]?, NSError?) -> Void)) {
+        Request.sendJsonRequest("\(loginServerAddress)searchBuddyKeyword", info: ["keyword" : keyword]) { (info: AnyObject?, error: NSError?) in
+            complete(info as? [[String : AnyObject]], error)
+        }
     }
 }
 

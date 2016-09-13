@@ -24,6 +24,7 @@
 		0E860F0D1D8506230086CAF1 /* RegisterAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F0B1D8506230086CAF1 /* RegisterAccountViewController.swift */; };
 		0E860F0E1D8506230086CAF1 /* RegisterAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E860F0C1D8506230086CAF1 /* RegisterAccountViewController.xib */; };
 		0E860F101D8507950086CAF1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F0F1D8507950086CAF1 /* Alert.swift */; };
+		0E860F131D883F560086CAF1 /* BuddyAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F121D883F560086CAF1 /* BuddyAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		0E860F0B1D8506230086CAF1 /* RegisterAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterAccountViewController.swift; sourceTree = "<group>"; };
 		0E860F0C1D8506230086CAF1 /* RegisterAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterAccountViewController.xib; sourceTree = "<group>"; };
 		0E860F0F1D8507950086CAF1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		0E860F121D883F560086CAF1 /* BuddyAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				0E860F001D84FF0D0086CAF1 /* BuddyTableViewController.swift */,
+				0E860F121D883F560086CAF1 /* BuddyAddViewController.swift */,
 			);
 			path = Buddy;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				0E339C2E1D81A2DB0004E252 /* LoginViewController.swift in Sources */,
 				0E339BFC1D819EFF0004E252 /* AppDelegate.swift in Sources */,
 				0E860F091D8500540086CAF1 /* MyInfoViewController.swift in Sources */,
+				0E860F131D883F560086CAF1 /* BuddyAddViewController.swift in Sources */,
 				0E860F0D1D8506230086CAF1 /* RegisterAccountViewController.swift in Sources */,
 				0E860F101D8507950086CAF1 /* Alert.swift in Sources */,
 				0E860F031D84FF230086CAF1 /* SessionsTableViewController.swift in Sources */,

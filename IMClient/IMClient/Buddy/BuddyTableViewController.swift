@@ -20,11 +20,17 @@ class BuddyTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.title = "好友"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(BuddyTableViewController.addBuddyItemPressed));
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Response Method
+    func addBuddyItemPressed() {
+        self.navigationController?.pushViewController(BuddyAddViewController(), animated: true)
     }
 
     // MARK: - Table view data source

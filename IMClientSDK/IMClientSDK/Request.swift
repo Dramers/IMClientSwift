@@ -10,7 +10,7 @@ import UIKit
 
 class Request: NSObject {
     
-    class func sendJsonRequest(urlString: String, info: [String: AnyObject], complete: ([String : AnyObject]?, NSError?) -> Void) {
+    class func sendJsonRequest(urlString: String, info: [String: AnyObject], complete: (AnyObject?, NSError?) -> Void) {
         
         do {
             let bodyJsonData = try NSJSONSerialization.dataWithJSONObject(info, options: NSJSONWritingOptions.PrettyPrinted)
@@ -33,7 +33,7 @@ class Request: NSObject {
                     }
                     
                     var err = error
-                    var info :[String : AnyObject]? = nil
+                    var info :AnyObject? = nil
                     if err == nil {
                         do {
                             let bodyJson = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
@@ -45,11 +45,11 @@ class Request: NSObject {
                                     err = NSError(domain: "Request", code: code, userInfo: [NSLocalizedDescriptionKey : msg])
                                 }
                                 else {
-                                    info = bodyJson["result"] as? [String : AnyObject]
+                                    info = bodyJson["result"]
                                 }
                             }
                             else {
-                                info = bodyJson as? [String : AnyObject]
+                                info = bodyJson
                             }
                         }
                         catch let error as NSError {
