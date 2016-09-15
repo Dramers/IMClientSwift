@@ -15,6 +15,9 @@ class Request: NSObject {
         do {
             let bodyJsonData = try NSJSONSerialization.dataWithJSONObject(info, options: NSJSONWritingOptions.PrettyPrinted)
             
+            
+            print("send json Data: \(NSString (data: bodyJsonData, encoding: NSUTF8StringEncoding))");
+            
             if let url = NSURL(string: urlString) {
                 let request = NSMutableURLRequest(URL: url)
                 request.HTTPBody = bodyJsonData
@@ -38,6 +41,7 @@ class Request: NSObject {
                         do {
                             let bodyJson = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
                             
+                            print("receive JSON String: \(NSString(data: data!, encoding: NSUTF8StringEncoding))")
                             if let code = bodyJson["code"] as? Int {
                                 
                                 if code > 0 {

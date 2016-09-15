@@ -33,6 +33,11 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "BuddyAddCell")
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchController?.searchBar.resignFirstResponder()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,7 +62,7 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
 
         // Configure the cell...
         var info = searchResults[indexPath.row]
-        cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)"
+        cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)  username: \(info["username"] as! String)"
 
         return cell
     }
@@ -65,6 +70,12 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // 添加好友
+        var info = searchResults[indexPath.row]
+        LoginService.shareInstance.addBuddys([info["userId"] as! Int]) { (error: NSError?) in
+            if error != nil {
+                Alert.showError(error!)
+            }
+        }
     }
 
     // MARK: - UISearchResultsUpdating

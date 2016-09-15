@@ -49,6 +49,29 @@ public class LoginService: NSObject {
             complete(info as? [[String : AnyObject]], error)
         }
     }
+    
+    public func addBuddys(buddyIds: [Int], complete: (NSError?) -> Void) {
+        
+        if loginInfo == nil {
+            complete(NSError(domain: "LoginServer Error addBuddy", code: 10001, userInfo: [NSLocalizedDescriptionKey : "not login"]))
+            return
+        }
+        
+        Request.sendJsonRequest("\(loginServerAddress)addBuddys", info: ["userId" : "\(self.loginInfo!.userId)", "buddyIds" : [8, 9]]) { (info: AnyObject?, error: NSError?) in
+            complete(error)
+        }
+    }
+    
+    public func queryBuddys(complete: (([[String : AnyObject]]?, NSError?) -> Void)) {
+        if loginInfo == nil {
+            complete(nil, NSError(domain: "LoginServer Error queryBuddys", code: 10002, userInfo: [NSLocalizedDescriptionKey : "not login"]))
+            return
+        }
+        
+        Request.sendJsonRequest("\(loginServerAddress)queryBuddys", info: ["userId" : "\(self.loginInfo!.userId)"]) { (info: AnyObject?, error: NSError?) in
+            complete(info as? [[String : AnyObject]], error)
+        }
+    }
 }
 
 public struct LoginInfo {

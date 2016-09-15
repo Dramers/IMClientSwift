@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import IMClientSDK
 
 class BuddyTableViewController: UITableViewController {
 
+    var buddys: [[String: AnyObject]] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,11 +24,31 @@ class BuddyTableViewController: UITableViewController {
         
         self.title = "好友"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(BuddyTableViewController.addBuddyItemPressed));
+        
+//        refreshDatas()
+        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "BuddyCell")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        refreshDatas()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Refresh Datas
+    func refreshDatas()  {
+        LoginService.shareInstance.queryBuddys { [unowned self] (queryBuddys: [[String : AnyObject]]?, error: NSError?) in
+            if queryBuddys != nil {
+                self.buddys = queryBuddys!
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Response Method
@@ -37,23 +60,25 @@ class BuddyTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return buddys.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("BuddyCell", forIndexPath: indexPath)
 
         // Configure the cell...
+        var info = buddys[indexPath.row]
+        cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)  username: \(info["username"] as! String)"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
