@@ -70,12 +70,18 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // 添加好友
-        var info = searchResults[indexPath.row]
-        LoginService.shareInstance.addBuddys([info["userId"] as! Int]) { (error: NSError?) in
-            if error != nil {
-                Alert.showError(error!)
-            }
-        }
+        self.searchController?.active = false
+        
+        let infoController = BuddyInfoViewController()
+        infoController.buddyInfo = searchResults[indexPath.row]
+        self.navigationController?.pushViewController(infoController, animated: true)
+        
+//        var info = searchResults[indexPath.row]
+//        LoginService.shareInstance.addBuddys([info["userId"] as! Int]) { (error: NSError?) in
+//            if error != nil {
+//                Alert.showError(error!)
+//            }
+//        }
     }
 
     // MARK: - UISearchResultsUpdating

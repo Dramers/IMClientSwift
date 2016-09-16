@@ -79,7 +79,11 @@ class BuddyTableViewController: UITableViewController {
         return cell
     }
     
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let infoController = BuddyInfoViewController()
+        infoController.buddyInfo = buddys[indexPath.row]
+        self.navigationController?.pushViewController(infoController, animated: true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

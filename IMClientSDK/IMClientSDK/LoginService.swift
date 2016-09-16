@@ -57,14 +57,25 @@ public class LoginService: NSObject {
             return
         }
         
-        Request.sendJsonRequest("\(loginServerAddress)addBuddys", info: ["userId" : "\(self.loginInfo!.userId)", "buddyIds" : [8, 9]]) { (info: AnyObject?, error: NSError?) in
+        Request.sendJsonRequest("\(loginServerAddress)addBuddys", info: ["userId" : "\(self.loginInfo!.userId)", "buddyIds" : buddyIds]) { (info: AnyObject?, error: NSError?) in
+            complete(error)
+        }
+    }
+    
+    public func removeBuddys(buddyIds: [Int], complete: (NSError?) -> Void) {
+        if loginInfo == nil {
+            complete(NSError(domain: "LoginServer Error removeBuddys", code: 10001, userInfo: [NSLocalizedDescriptionKey : "not login"]))
+            return
+        }
+        
+        Request.sendJsonRequest("\(loginServerAddress)removeBuddys", info: ["userId" : "\(self.loginInfo!.userId)", "buddyIds" : buddyIds]) { (info: AnyObject?, error: NSError?) in
             complete(error)
         }
     }
     
     public func queryBuddys(complete: (([[String : AnyObject]]?, NSError?) -> Void)) {
         if loginInfo == nil {
-            complete(nil, NSError(domain: "LoginServer Error queryBuddys", code: 10002, userInfo: [NSLocalizedDescriptionKey : "not login"]))
+            complete(nil, NSError(domain: "LoginServer Error queryBuddys", code: 10001, userInfo: [NSLocalizedDescriptionKey : "not login"]))
             return
         }
         
@@ -79,11 +90,13 @@ public struct LoginInfo {
     public var name: String
     public var userId: Int
     public var password: String
+    public var buddyIds: [Int]
     
     init (loginInfo: [String : AnyObject], password: String) {
         self.username = loginInfo["username"] as! String
         self.name = loginInfo["name"] as! String
         self.userId = loginInfo["userId"] as! Int
         self.password = password
+        self.buddyIds = loginInfo["buddyIds"] as! [Int];
     }
 }
