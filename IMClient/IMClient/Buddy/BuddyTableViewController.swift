@@ -23,14 +23,15 @@ class BuddyTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.title = "好友"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(BuddyTableViewController.addBuddyItemPressed));
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: <#T##Any?#>, action: <#T##Selector?#>)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(BuddyTableViewController.addBuddyItemPressed));
         
 //        refreshDatas()
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "BuddyCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BuddyCell")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         refreshDatas()
@@ -57,29 +58,26 @@ class BuddyTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return buddys.count
     }
 
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BuddyCell", forIndexPath: indexPath)
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BuddyCell", for: indexPath)
+        
         // Configure the cell...
         var info = buddys[indexPath.row]
         cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)  username: \(info["username"] as! String)"
-
+        
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let infoController = BuddyInfoViewController()
         infoController.buddyInfo = buddys[indexPath.row]
         self.navigationController?.pushViewController(infoController, animated: true)

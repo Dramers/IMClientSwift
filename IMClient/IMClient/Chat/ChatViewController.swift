@@ -1,25 +1,21 @@
 //
-//  MyInfoViewController.swift
+//  ChatViewController.swift
 //  IMClient
 //
-//  Created by LuoZhongYan on 16/9/11.
+//  Created by LuoZhongYan on 16/9/16.
 //  Copyright © 2016年 LuoZhongYan. All rights reserved.
 //
 
 import UIKit
-import IMClientSDK
 
-class MyInfoViewController: UIViewController {
+class ChatViewController: UIViewController {
 
-    @IBOutlet weak var myNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "我的"
-        
-        self.myNameLabel.text = LoginService.shareInstance.loginInfo?.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,9 +34,4 @@ class MyInfoViewController: UIViewController {
     }
     */
 
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
-        LoginService.shareInstance.logout()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.turnToLoginController()
-    }
 }

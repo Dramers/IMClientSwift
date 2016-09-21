@@ -25,15 +25,15 @@ struct Alert {
         
     }
     
-    static func showAlert(title: String?, message: String?, cancelButtonTitle: String?, complete: ((alert: Alert, buttonIndex: Int) -> Void)?, controller: UIViewController?, otherButtonTitles: String?...) {
+    static func showAlert(title: String?, message: String?, cancelButtonTitle: String?, complete: ((_ alert: Alert, _ buttonIndex: Int) -> Void)?, controller: UIViewController?, otherButtonTitles: String?...) {
         
     }
     
-    static func showAlert(title: String?, message: String?, style: UIAlertViewStyle?, cancelButtonTitle: String?, complete: ((alert: Alert, buttonIndex: Int) -> Void)?, controller: UIViewController?, otherButtonTitles: String?...) {
+    static func showAlert(title: String?, message: String?, style: UIAlertViewStyle?, cancelButtonTitle: String?, complete: ((_ alert: Alert, _ buttonIndex: Int) -> Void)?, controller: UIViewController?, otherButtonTitles: String?...) {
         
     }
     
-    static func showAlert(title: String?, message: String?, style: UIAlertViewStyle?, textFieldDefaultTexts: [String]?, cancelButtonTitle: String?, complete: ((alert: Alert, buttonIndex: Int) -> Void)?, controller: UIViewController?, otherButtonTitles: String?...) {
+    static func showAlert(title: String?, message: String?, style: UIAlertViewStyle?, textFieldDefaultTexts: [String]?, cancelButtonTitle: String?, complete: ((_ alert: Alert, _ buttonIndex: Int) -> Void)?, controller: UIViewController?, otherButtonTitles: String?...) {
         
     }
     

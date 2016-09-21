@@ -24,20 +24,20 @@ class MainTabBarViewController: UITabBarController {
 
     func initVieControllers() {
         // Session
-        let sessionController = navigationControoler(SessionsTableViewController(), title: "会话", image: nil, selectedImage: nil)
+        let sessionController = navigationControoler(controller: SessionsTableViewController(), title: "会话", image: nil, selectedImage: nil)
         
         // Buddy
-        let buddyController = navigationControoler(BuddyTableViewController(), title: "好友", image: nil, selectedImage: nil)
+        let buddyController = navigationControoler(controller: BuddyTableViewController(), title: "好友", image: nil, selectedImage: nil)
         
         // My
-        let myController = navigationControoler(MyInfoViewController(), title: "我的", image: nil, selectedImage: nil)
+        let myController = navigationControoler(controller: MyInfoViewController(), title: "我的", image: nil, selectedImage: nil)
         
         self.viewControllers = [sessionController, buddyController, myController]
     }
     
     func navigationControoler(controller: UIViewController, title: String?, image: UIImage?, selectedImage: UIImage?) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.navigationBar.translucent = false
+        navigationController.navigationBar.isTranslucent = false
         navigationController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
 //        navigationController.title = title
         return navigationController

@@ -29,7 +29,7 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
         
         if LoginService.shareInstance.loginInfo != nil && buddyInfo != nil {
             if let buddyIds = LoginService.shareInstance.loginInfo {
-                isBuddyButton.selected = buddyIds.buddyIds.contains(buddyInfo!["userId"] as! Int)
+                isBuddyButton.isSelected = buddyIds.buddyIds.contains(buddyInfo!["userId"] as! Int)
             }
             
             userIdLabel.text = "\(buddyInfo!["userId"] as! Int)"
@@ -37,7 +37,7 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
             nameLabel.text = buddyInfo?["name"] as? String
         }
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "BuddyCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BuddyCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,38 +63,44 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
             return
         }
         
-        if isBuddyButton.selected {
+        if isBuddyButton.isSelected {
             LoginService.shareInstance.removeBuddys([buddyInfo!["userId"] as! Int], complete: { [unowned self] (error: NSError?) in
                 if error != nil {
-                    Alert.showError(error!)
+                    Alert.showError(error: error!)
                 }
                 else {
-                    self.isBuddyButton.selected = false
+                    self.isBuddyButton.isSelected = false
                 }
             })
         }else {
             LoginService.shareInstance.addBuddys([buddyInfo!["userId"] as! Int], complete: { (error: NSError?) in
                 if error != nil {
-                    Alert.showError(error!)
+                    Alert.showError(error: error!)
                 }
                 else {
-                    self.isBuddyButton.selected = true
+                    self.isBuddyButton.isSelected = true
                 }
             })
         }
     }
+    @IBAction func sendMsgButtonPressed(sender: AnyObject) {
+        let msgModel = MsgModel(fromId: LoginService.shareInstance.loginInfo!.userId, toId: buddyInfo!["userId"] as! Int, contentStr: "helloWorld", msgContentType: 1, sessionId: nil)
+//        MsgModel()
+        MsgService.shareInstance.sendMessage(msgModel) { (error: NSError?) in
+            
+        }
+    }
     
     // UITableView DataSource Delegate
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  buddyInfo != nil {
             return (self.buddyInfo!["buddyIds"] as! [Int]).count
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BuddyCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BuddyCell", for: indexPath)
         
         let info = (self.buddyInfo!["buddyIds"] as! [Int])[indexPath.row]
         cell.textLabel?.text = "userId: \(info))"

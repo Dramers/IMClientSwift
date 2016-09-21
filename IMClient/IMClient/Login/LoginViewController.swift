@@ -41,11 +41,11 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: AnyObject) {
         LoginService.shareInstance.login(userNameTextField.text!, password: passwordTextField.text!) { (info: LoginInfo?, error: NSError?) in
             if error == nil {
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.turnToMainController()
             }
             else {
-                Alert.showError(error!)
+                Alert.showError(error: error!)
             }
         }
     }

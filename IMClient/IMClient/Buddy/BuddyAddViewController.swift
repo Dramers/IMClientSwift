@@ -31,12 +31,12 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
         searchController?.searchBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
         self.tableView.tableHeaderView = searchController?.searchBar
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "BuddyAddCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BuddyAddCell")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        searchController?.searchBar.resignFirstResponder()
+        self.searchController?.isActive = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,51 +46,42 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return searchResults.count
     }
 
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BuddyAddCell", forIndexPath: indexPath)
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BuddyAddCell", for: indexPath)
+        
         // Configure the cell...
         var info = searchResults[indexPath.row]
         cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)  username: \(info["username"] as! String)"
-
+        
         return cell
     }
  
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 添加好友
-        self.searchController?.active = false
+        self.searchController?.isActive = false
         
         let infoController = BuddyInfoViewController()
         infoController.buddyInfo = searchResults[indexPath.row]
         self.navigationController?.pushViewController(infoController, animated: true)
         
-//        var info = searchResults[indexPath.row]
-//        LoginService.shareInstance.addBuddys([info["userId"] as! Int]) { (error: NSError?) in
-//            if error != nil {
-//                Alert.showError(error!)
-//            }
-//        }
     }
 
     // MARK: - UISearchResultsUpdating
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         
     }
     
     // MARK: - UISearchBarDelegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         LoginService.shareInstance.searchUsers(searchBar.text!) { [unowned self] (results: [[String : AnyObject]]?, error: NSError?) in
             
             if error == nil {
@@ -98,7 +89,7 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
                 self.tableView.reloadData()
             }
             else {
-                Alert.showError(error!)
+                Alert.showError(error: error!)
             }
         }
     }

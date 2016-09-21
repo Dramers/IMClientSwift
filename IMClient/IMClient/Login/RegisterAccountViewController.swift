@@ -42,10 +42,10 @@ class RegisterAccountViewController: UIViewController {
         LoginService.shareInstance.register(usernameTextField.text!, password: passwordTextField.text!, name: usernameTextField.text!) { [unowned self] (info: LoginInfo?, error: NSError?) in
             
             if error != nil {
-                Alert.showError(error!)
+                Alert.showError(error: error!)
             }
             else {
-                self.navigationController?.popViewControllerAnimated(true)
+                let _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }
