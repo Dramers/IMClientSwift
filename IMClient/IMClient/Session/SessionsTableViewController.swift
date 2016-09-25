@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IMClientSDK
 
 class SessionsTableViewController: UITableViewController {
 
@@ -20,11 +21,18 @@ class SessionsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.title = "会话"
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SessionsTableViewController.receiveNewMessage), name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - receive New Message
+    func receiveNewMessage(noti: Notification)  {
+        print("notification object: \(noti.object!)")
     }
 
     // MARK: - Table view data source
