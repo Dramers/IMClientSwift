@@ -16,7 +16,6 @@
 		0E339C601D81A6390004E252 /* IMClientSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E339C5A1D81A5E30004E252 /* IMClientSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E860EFC1D84FE9F0086CAF1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860EFB1D84FE9F0086CAF1 /* MainTabBarViewController.swift */; };
 		0E860F011D84FF0D0086CAF1 /* BuddyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F001D84FF0D0086CAF1 /* BuddyTableViewController.swift */; };
-		0E860F031D84FF230086CAF1 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F021D84FF230086CAF1 /* SessionsTableViewController.swift */; };
 		0E860F091D8500540086CAF1 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F071D8500540086CAF1 /* MyInfoViewController.swift */; };
 		0E860F0A1D8500540086CAF1 /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E860F081D8500540086CAF1 /* MyInfoViewController.xib */; };
 		0E860F0D1D8506230086CAF1 /* RegisterAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F0B1D8506230086CAF1 /* RegisterAccountViewController.swift */; };
@@ -27,6 +26,12 @@
 		0E860F181D8B695D0086CAF1 /* BuddyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E860F161D8B695D0086CAF1 /* BuddyInfoViewController.xib */; };
 		0E860F1B1D8B80100086CAF1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E860F191D8B80100086CAF1 /* ChatViewController.swift */; };
 		0E860F1C1D8B80100086CAF1 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E860F1A1D8B80100086CAF1 /* ChatViewController.xib */; };
+		0EDE544F1D96C136003CAC90 /* SessionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE544E1D96C136003CAC90 /* SessionsTableViewController.swift */; };
+		0EDE54531D96C177003CAC90 /* ChatMyTextMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE54511D96C177003CAC90 /* ChatMyTextMsgCell.swift */; };
+		0EDE54541D96C177003CAC90 /* ChatMyTextMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EDE54521D96C177003CAC90 /* ChatMyTextMsgCell.xib */; };
+		0EDE54571D96C190003CAC90 /* ChatBuddyTextMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE54551D96C190003CAC90 /* ChatBuddyTextMsgCell.swift */; };
+		0EDE54581D96C190003CAC90 /* ChatBuddyTextMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EDE54561D96C190003CAC90 /* ChatBuddyTextMsgCell.xib */; };
+		0EDE545A1D96C32B003CAC90 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE54591D96C32B003CAC90 /* ChatViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +90,6 @@
 		0E339C541D81A5E30004E252 /* IMClientSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IMClientSDK.xcodeproj; path = ../IMClientSDK/IMClientSDK.xcodeproj; sourceTree = "<group>"; };
 		0E860EFB1D84FE9F0086CAF1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		0E860F001D84FF0D0086CAF1 /* BuddyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddyTableViewController.swift; sourceTree = "<group>"; };
-		0E860F021D84FF230086CAF1 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
 		0E860F071D8500540086CAF1 /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		0E860F081D8500540086CAF1 /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
 		0E860F0B1D8506230086CAF1 /* RegisterAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterAccountViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,12 @@
 		0E860F161D8B695D0086CAF1 /* BuddyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuddyInfoViewController.xib; sourceTree = "<group>"; };
 		0E860F191D8B80100086CAF1 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0E860F1A1D8B80100086CAF1 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		0EDE544E1D96C136003CAC90 /* SessionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsTableViewController.swift; sourceTree = "<group>"; };
+		0EDE54511D96C177003CAC90 /* ChatMyTextMsgCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMyTextMsgCell.swift; sourceTree = "<group>"; };
+		0EDE54521D96C177003CAC90 /* ChatMyTextMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMyTextMsgCell.xib; sourceTree = "<group>"; };
+		0EDE54551D96C190003CAC90 /* ChatBuddyTextMsgCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBuddyTextMsgCell.swift; sourceTree = "<group>"; };
+		0EDE54561D96C190003CAC90 /* ChatBuddyTextMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatBuddyTextMsgCell.xib; sourceTree = "<group>"; };
+		0EDE54591D96C32B003CAC90 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +143,7 @@
 				0E339BFB1D819EFF0004E252 /* AppDelegate.swift */,
 				0E860EFA1D84FE820086CAF1 /* Main */,
 				0E860EFD1D84FED40086CAF1 /* Buddy */,
+				0EDE50B41D96C0D100629DFF /* Session */,
 				0E860EFE1D84FED40086CAF1 /* Chat */,
 				0E860EFF1D84FED40086CAF1 /* My */,
 				0E339C2B1D81A2BD0004E252 /* Login */,
@@ -186,9 +197,10 @@
 		0E860EFE1D84FED40086CAF1 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				0E860F021D84FF230086CAF1 /* SessionsTableViewController.swift */,
+				0EDE50B21D96C0C200629DFF /* Cell */,
 				0E860F191D8B80100086CAF1 /* ChatViewController.swift */,
 				0E860F1A1D8B80100086CAF1 /* ChatViewController.xib */,
+				0EDE54591D96C32B003CAC90 /* ChatViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -208,6 +220,25 @@
 				0E860F0F1D8507950086CAF1 /* Alert.swift */,
 			);
 			path = UIVender;
+			sourceTree = "<group>";
+		};
+		0EDE50B21D96C0C200629DFF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0EDE54511D96C177003CAC90 /* ChatMyTextMsgCell.swift */,
+				0EDE54521D96C177003CAC90 /* ChatMyTextMsgCell.xib */,
+				0EDE54551D96C190003CAC90 /* ChatBuddyTextMsgCell.swift */,
+				0EDE54561D96C190003CAC90 /* ChatBuddyTextMsgCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0EDE50B41D96C0D100629DFF /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				0EDE544E1D96C136003CAC90 /* SessionsTableViewController.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +327,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDE54541D96C177003CAC90 /* ChatMyTextMsgCell.xib in Resources */,
 				0E860F0E1D8506230086CAF1 /* RegisterAccountViewController.xib in Resources */,
 				0E339C081D819EFF0004E252 /* LaunchScreen.storyboard in Resources */,
+				0EDE54581D96C190003CAC90 /* ChatBuddyTextMsgCell.xib in Resources */,
 				0E860F1C1D8B80100086CAF1 /* ChatViewController.xib in Resources */,
 				0E339C051D819EFF0004E252 /* Assets.xcassets in Resources */,
 				0E860F181D8B695D0086CAF1 /* BuddyInfoViewController.xib in Resources */,
@@ -316,14 +349,17 @@
 				0E860F011D84FF0D0086CAF1 /* BuddyTableViewController.swift in Sources */,
 				0E860EFC1D84FE9F0086CAF1 /* MainTabBarViewController.swift in Sources */,
 				0E860F1B1D8B80100086CAF1 /* ChatViewController.swift in Sources */,
+				0EDE544F1D96C136003CAC90 /* SessionsTableViewController.swift in Sources */,
+				0EDE54531D96C177003CAC90 /* ChatMyTextMsgCell.swift in Sources */,
 				0E339C2E1D81A2DB0004E252 /* LoginViewController.swift in Sources */,
 				0E860F171D8B695D0086CAF1 /* BuddyInfoViewController.swift in Sources */,
 				0E339BFC1D819EFF0004E252 /* AppDelegate.swift in Sources */,
+				0EDE545A1D96C32B003CAC90 /* ChatViewModel.swift in Sources */,
 				0E860F091D8500540086CAF1 /* MyInfoViewController.swift in Sources */,
 				0E860F131D883F560086CAF1 /* BuddyAddViewController.swift in Sources */,
 				0E860F0D1D8506230086CAF1 /* RegisterAccountViewController.swift in Sources */,
 				0E860F101D8507950086CAF1 /* Alert.swift in Sources */,
-				0E860F031D84FF230086CAF1 /* SessionsTableViewController.swift in Sources */,
+				0EDE54571D96C190003CAC90 /* ChatBuddyTextMsgCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,7 @@ public struct MsgModel {
     public var msgId: String
     public var serverReceiveDate: Date?
     public var sendDate: Date
-    public var msgContentType: Int
+    public var msgContentType: Int // 1为纯文本
     public var sessionId: String?
     public var state: Int
     

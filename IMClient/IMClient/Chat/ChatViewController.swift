@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import IMClientSDK
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var viewModel = ChatViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,13 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - View Init
+    private let myTextMsgCellId = "ChatMyTextMsgCell"
+    private let buddyTextMsgCellId = "ChatBuddyTextMsgCell"
+    func registerCells() {
+        tableView.register(UINib(nibName: myTextMsgCellId, bundle: nil), forCellReuseIdentifier: myTextMsgCellId)
+        tableView.register(UINib(nibName: buddyTextMsgCellId, bundle: nil), forCellReuseIdentifier: buddyTextMsgCellId)
+    }
 
     /*
     // MARK: - Navigation
@@ -34,4 +44,26 @@ class ChatViewController: UIViewController {
     }
     */
 
+    // MARK: - UITableView DataSource Delegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let msgModel = viewModel.messages[indexPath.row]
+        
+        if msgModel.msgContentType == 1 && msgModel.fromUserId == LoginService.shareInstance.loginInfo?.userId {
+            let cell = tableView.dequeueReusableCell(withIdentifier: myTextMsgCellId, for: indexPath)
+            return cell
+        }
+        else if msgModel.msgContentType == 1 && msgModel.fromUserId != LoginService.shareInstance.loginInfo?.userId {
+            let cell = tableView.dequeueReusableCell(withIdentifier: buddyTextMsgCellId, for: indexPath)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: buddyTextMsgCellId, for: indexPath)
+            return cell
+        }
+    }
 }
