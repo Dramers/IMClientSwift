@@ -18,6 +18,7 @@ public struct MsgModel {
     public var sendDate: Date
     public var msgContentType: Int // 1为纯文本
     public var sessionId: String?
+    public var sessionName: String?
     public var state: Int
     
     public init( fromId: Int, toId: Int, contentStr: String, msgContentType: Int, sessionId: String?) {
@@ -51,5 +52,12 @@ public struct MsgModel {
         }
         
         return sendData as AnyObject
+    }
+}
+
+// DB Method
+extension MsgModel {
+    func insertDB() {
+        MsgDBModel.insertDB(msgModel: self)
     }
 }

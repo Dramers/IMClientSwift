@@ -46,6 +46,8 @@
 		0EDE54791D96CC04003CAC90 /* ClientMsgDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE54781D96CC04003CAC90 /* ClientMsgDB.swift */; };
 		0EDE547C1D96CC22003CAC90 /* MsgDBModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE547A1D96CC22003CAC90 /* MsgDBModel+CoreDataClass.swift */; };
 		0EDE547D1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE547B1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift */; };
+		E09E565F1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E565D1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift */; };
+		E09E56601DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E565E1DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		0EDE54781D96CC04003CAC90 /* ClientMsgDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientMsgDB.swift; sourceTree = "<group>"; };
 		0EDE547A1D96CC22003CAC90 /* MsgDBModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MsgDBModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0EDE547B1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MsgDBModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E09E565D1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionDBModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E09E565E1DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionDBModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,8 @@
 		0EDE54621D96C76A003CAC90 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				E09E565D1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift */,
+				E09E565E1DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift */,
 				0EDE547A1D96CC22003CAC90 /* MsgDBModel+CoreDataClass.swift */,
 				0EDE547B1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift */,
 				0EDE54631D96C76A003CAC90 /* ClientMsgDB.xcdatamodeld */,
@@ -352,6 +358,7 @@
 				0EDE54771D96CBDC003CAC90 /* ClientMsgDBHelper.swift in Sources */,
 				0E860F391D8BAE370086CAF1 /* SocketAckManager.swift in Sources */,
 				0E860F4C1D8BAE370086CAF1 /* SocketStringReader.swift in Sources */,
+				E09E565F1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift in Sources */,
 				0E860F3B1D8BAE370086CAF1 /* SocketClientManager.swift in Sources */,
 				0E860F421D8BAE370086CAF1 /* SocketEventHandler.swift in Sources */,
 				0EDE54791D96CC04003CAC90 /* ClientMsgDB.swift in Sources */,
@@ -364,6 +371,7 @@
 				0E860F491D8BAE370086CAF1 /* SocketLogger.swift in Sources */,
 				0EDE547D1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift in Sources */,
 				0EDE54671D96C874003CAC90 /* MsgModelDBControl.swift in Sources */,
+				E09E56601DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift in Sources */,
 				0E860F3D1D8BAE370086CAF1 /* SocketEngineClient.swift in Sources */,
 				0E860F4F1D8BAE370086CAF1 /* WebSocket.swift in Sources */,
 				0E860F3C1D8BAE370086CAF1 /* SocketEngine.swift in Sources */,

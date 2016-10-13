@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MsgDBModel" representedClassName=".MsgDBModel" syncable="YES">
         <attribute name="contentStr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fromUserId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -11,9 +11,13 @@
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="toUserId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="SessionDBModel" syncable="YES"/>
+    <entity name="SessionDBModel" representedClassName=".SessionDBModel" syncable="YES">
+        <attribute name="sessionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
         <element name="MsgDBModel" positionX="-63" positionY="-18" width="128" height="180"/>
-        <element name="SessionDBModel" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="SessionDBModel" positionX="-54" positionY="-9" width="128" height="90"/>
     </elements>
 </model>

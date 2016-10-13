@@ -56,12 +56,18 @@ open class MsgService: NSObject {
                     msgModel.serverReceiveDate = Date(timeIntervalSince1970: info["serverReceiveDate"] as! TimeInterval)
                     msgModel.state = info["state"] as! Int
                     
+                    msgModel.insertDB()
+                    
+                    if msgModel.sessionId != nil {
+                        if !SessionModel.checkExist(sessionId: msgModel.sessionId!) {
+                            let sessionModel = SessionModel(type: SessionType.Group, sessionId: msgModel.sessionId!, sessionName: "")
+                        }
+                    }
+                    
                     
                     self.delegate?.receiveNewMsg(msgModel)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: msgModel, userInfo: nil)
                 }
-                
-                
             }
             
 //            self.delegate?.receiveNewMsg(MsgModel(fromId: <#T##Int#>, toId: <#T##Int#>, contentStr: <#T##String#>, msgContentType: <#T##Int#>, sessionId: <#T##String?#>)
@@ -72,7 +78,13 @@ open class MsgService: NSObject {
     
     open func sendMessage(_ model: MsgModel, complete: ((NSError?) -> Void)?) {
         socket?.emit("message", model.toSendData() as! SocketData)
+        model.insertDB()
     }
-    
-    
+}
+
+// MARK: - Session
+extension MsgService {
+    func queryAllSessionModels() -> [SessionModel] {
+        return SessionDBModel.queryAllSession()
+    }
 }
