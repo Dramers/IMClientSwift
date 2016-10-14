@@ -58,9 +58,9 @@ open class MsgService: NSObject {
                     
                     msgModel.insertDB()
                     
-                    if msgModel.sessionId != nil {
-                        if !SessionModel.checkExist(sessionId: msgModel.sessionId!) {
-                            let sessionModel = SessionModel(type: SessionType.Group, sessionId: msgModel.sessionId!, sessionName: "")
+                    if msgModel.sessionId == nil {
+                        if !SessionModel.checkExist(sessionId: "\(msgModel.fromUserId)") {
+                            let sessionModel = SessionModel(type: SessionType.Buddy, sessionId: "\(msgModel.fromUserId)", sessionName: "\(msgModel.fromUserId)")
                         }
                     }
                     

@@ -48,6 +48,8 @@
 		0EDE547D1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE547B1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift */; };
 		E09E565F1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E565D1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift */; };
 		E09E56601DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E565E1DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift */; };
+		E0D406951DB1330600CF6253 /* UserDBModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D406931DB1330600CF6253 /* UserDBModel+CoreDataClass.swift */; };
+		E0D406961DB1330600CF6253 /* UserDBModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D406941DB1330600CF6253 /* UserDBModel+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		0EDE547B1D96CC22003CAC90 /* MsgDBModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MsgDBModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E09E565D1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionDBModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E09E565E1DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SessionDBModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E0D406931DB1330600CF6253 /* UserDBModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDBModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E0D406941DB1330600CF6253 /* UserDBModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDBModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,8 @@
 		0EDE54621D96C76A003CAC90 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				E0D406931DB1330600CF6253 /* UserDBModel+CoreDataClass.swift */,
+				E0D406941DB1330600CF6253 /* UserDBModel+CoreDataProperties.swift */,
 				E09E565D1DAFD8BD00378C43 /* SessionDBModel+CoreDataClass.swift */,
 				E09E565E1DAFD8BD00378C43 /* SessionDBModel+CoreDataProperties.swift */,
 				0EDE547A1D96CC22003CAC90 /* MsgDBModel+CoreDataClass.swift */,
@@ -349,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0D406961DB1330600CF6253 /* UserDBModel+CoreDataProperties.swift in Sources */,
 				0E339C651D81A6A10004E252 /* LoginService.swift in Sources */,
 				0EDE54651D96C76A003CAC90 /* ClientMsgDB.xcdatamodeld in Sources */,
 				0E860F481D8BAE370086CAF1 /* SocketIOClientStatus.swift in Sources */,
@@ -376,6 +383,7 @@
 				0E860F4F1D8BAE370086CAF1 /* WebSocket.swift in Sources */,
 				0E860F3C1D8BAE370086CAF1 /* SocketEngine.swift in Sources */,
 				0E339C691D81A7AC0004E252 /* Request.swift in Sources */,
+				E0D406951DB1330600CF6253 /* UserDBModel+CoreDataClass.swift in Sources */,
 				0E860F4D1D8BAE370086CAF1 /* SocketTypes.swift in Sources */,
 				0E339C671D81A6E90004E252 /* MsgService.swift in Sources */,
 				0E860F4A1D8BAE370086CAF1 /* SocketPacket.swift in Sources */,

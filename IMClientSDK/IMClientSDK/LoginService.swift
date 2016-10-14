@@ -9,7 +9,7 @@
 import UIKit
 
 open class LoginService: NSObject {
-    open var loginServerAddress = "http://192.168.1.9:3002/"
+    open var loginServerAddress = "http://192.168.1.4:3002/"
     
     open static let shareInstance = LoginService()
     
@@ -22,6 +22,7 @@ open class LoginService: NSObject {
         
         Request.sendJsonRequest("\(loginServerAddress)login", jsonInfo: ["username" : username as AnyObject, "password" : password]) { [unowned self] (info: AnyObject?, error: NSError?)  in
             
+            NSLog("\(info)")
             if error == nil && info != nil {
                 self.loginInfo = LoginInfo(loginInfo: info as! [String : AnyObject], password: password)
                 
@@ -86,6 +87,24 @@ open class LoginService: NSObject {
         Request.sendJsonRequest("\(loginServerAddress)queryBuddys", jsonInfo: ["userId" : "\(self.loginInfo!.userId)"]) { (info: AnyObject?, error: NSError?) in
             complete(info as? [[String : AnyObject]], error)
         }
+    }
+    
+    func queryUserInfo(userId: Int, complete: @escaping (UserModel?, NSError?) -> Void) {
+        if loginInfo == nil {
+            complete(nil, NSError(domain: "LoginServer Error queryBuddys", code: 10001, userInfo: [NSLocalizedDescriptionKey : "not login"]))
+            return
+        }
+        
+        Request.sendJsonRequest("\(loginServerAddress)queryUserInfo", jsonInfo: ["userId" : "\(userId)"]) { (info: AnyObject?, error: NSError?) in
+            
+            var model: UserModel? = nil
+            if error == nil {
+                model = UserModel(info: info as! [String : AnyObject])
+            }
+            
+            complete(model, error)
+        }
+        
     }
 }
 

@@ -8,6 +8,14 @@
 
 import UIKit
 
-class UserModel: NSObject {
-
+struct UserModel {
+    var userId: Int
+    var name: String
+    var headURLStr: String?
+    
+    init(info: [String : AnyObject]) {
+        userId = info["userId"] as! Int
+        name = info["name"] as! String
+        headURLStr = info["headURLStr"] as? String
+    }
 }
