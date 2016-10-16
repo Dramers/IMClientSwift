@@ -19,5 +19,6 @@ extension SessionDBModel {
     @NSManaged public var type: Int16
     @NSManaged public var sessionId: String?
     @NSManaged public var sessionName: String?
-
+    @NSManaged public var unreadCount: Int64
+    @NSManaged public var lastMsgContent: String?
 }

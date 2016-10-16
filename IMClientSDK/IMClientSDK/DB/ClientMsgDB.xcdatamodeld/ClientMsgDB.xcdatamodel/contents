@@ -12,9 +12,11 @@
         <attribute name="toUserId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="SessionDBModel" representedClassName=".SessionDBModel" syncable="YES">
+        <attribute name="lastMsgContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sessionId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sessionName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unreadCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="UserDBModel" representedClassName=".UserDBModel" syncable="YES">
         <attribute name="headURLStr" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,7 +25,7 @@
     </entity>
     <elements>
         <element name="MsgDBModel" positionX="-63" positionY="-18" width="128" height="180"/>
-        <element name="SessionDBModel" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="SessionDBModel" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="UserDBModel" positionX="-54" positionY="54" width="128" height="90"/>
     </elements>
 </model>

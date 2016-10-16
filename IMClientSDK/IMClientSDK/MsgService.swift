@@ -59,14 +59,30 @@ open class MsgService: NSObject {
                     msgModel.insertDB()
                     
                     if msgModel.sessionId == nil {
-                        if !SessionModel.checkExist(sessionId: "\(msgModel.fromUserId)") {
-                            let sessionModel = SessionModel(type: SessionType.Buddy, sessionId: "\(msgModel.fromUserId)", sessionName: "\(msgModel.fromUserId)")
+                        
+                        if var sessinModel = SessionModel(sessionId: "\(msgModel.fromUserId)") {
+                            sessinModel.lastMsgContent = msgModel.contentStr
+                            sessinModel.unreadCount += 1
+                            sessinModel.updateDB()
+                            
+                            self.notificationReceiveNewMsg(msgModel: msgModel)
+                        }
+                        else {
+//                            if let userModel =
+                            UserModel.queryUser(userId: msgModel.fromUserId, complete: { (userModel: UserModel?) in
+                                
+                                if userModel != nil {
+                                    let sessionModel = SessionModel(type: SessionType.buddy, sessionId: "\(msgModel.fromUserId)", sessionName: "\(userModel!.name)", unreadCount: 0, lastMsgContent: msgModel.contentStr)
+                                    sessionModel.insertDB()
+                                }
+                                self.notificationReceiveNewMsg(msgModel: msgModel)
+                            })
+                            
                         }
                     }
                     
                     
-                    self.delegate?.receiveNewMsg(msgModel)
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: msgModel, userInfo: nil)
+                    
                 }
             }
             
@@ -76,11 +92,18 @@ open class MsgService: NSObject {
         socket?.connect()
     }
     
+    func notificationReceiveNewMsg(msgModel: MsgModel) {
+        self.delegate?.receiveNewMsg(msgModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: msgModel, userInfo: nil)
+    }
+    
     open func sendMessage(_ model: MsgModel, complete: ((NSError?) -> Void)?) {
         socket?.emit("message", model.toSendData() as! SocketData)
         model.insertDB()
     }
 }
+
+
 
 // MARK: - Session
 extension MsgService {

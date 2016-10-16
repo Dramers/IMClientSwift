@@ -11,5 +11,6 @@ import IMClientSDK
 
 class ChatViewModel: NSObject {
     
+    var sessionId: String = ""
     var messages: [MsgModel] = []
 }

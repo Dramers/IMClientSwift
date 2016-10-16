@@ -20,6 +20,8 @@ class SessionDBModel: NSManagedObject {
         insertData.type = Int16(model.type.rawValue)
         insertData.sessionId = model.sessionId
         insertData.sessionName = model.sessionName
+        insertData.unreadCount = Int64(model.unreadCount)
+        insertData.lastMsgContent = model.lastMsgContent
         
         do {
             try context.save()
@@ -27,6 +29,34 @@ class SessionDBModel: NSManagedObject {
         } catch _ {
             NSLog("Insert SessionDBModel Data Fail.  sessionId: \(model.sessionId)")
         }
+    }
+    
+    class func updateDB(model: SessionModel) {
+        let context = ClientMsgDB.sharedInstance.managedObjectContext
+        let entityDescription = NSEntityDescription.entity(forEntityName: "SessionDBModel", in: context)
+        
+        let request = NSFetchRequest<NSFetchRequestResult>()
+        request.entity = entityDescription
+        request.predicate = NSPredicate(format: "sessionId == %@", model.sessionId)
+        
+        let listData = (try! context.fetch(request)) as! [SessionDBModel]
+        
+        
+        if let managedObject = listData.first {
+            
+            managedObject.lastMsgContent = model.lastMsgContent
+            managedObject.unreadCount = Int64(model.unreadCount)
+            managedObject.sessionName = model.sessionName
+            
+            
+            do {
+                try context.save()
+            }catch let error1 as NSError {
+                print(error1)
+            }
+        }
+        
+        
     }
     
     class func querySession(sessionId: String) -> SessionModel? {
@@ -70,7 +100,9 @@ class SessionDBModel: NSManagedObject {
         let type = SessionType(rawValue: (dbModel.value(forKey: "type") as! NSNumber).intValue)!
         let sessionId = dbModel.value(forKey: "sessionId") as! String
         let sessionName = dbModel.value(forKey: "sessionName") as! String
+        let unreadCount = dbModel.value(forKey: "unreadCount") as! NSNumber
+        let lastMsgContent = dbModel.value(forKey: "lastMsgContent") as! String
         
-        return SessionModel(type: type, sessionId: sessionId, sessionName: sessionName)
+        return SessionModel(type: type, sessionId: sessionId, sessionName: sessionName, unreadCount: unreadCount.intValue, lastMsgContent: lastMsgContent)
     }
 }

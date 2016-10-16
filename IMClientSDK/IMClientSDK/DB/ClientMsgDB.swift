@@ -21,6 +21,20 @@ class ClientMsgDB: NSObject {
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
+        /*
+         if (!mergedManagedObjectModel)
+         {
+         NSMutableSet *allBundles = [[[NSMutableSet alloc] init] autorelease];
+         [allBundles addObjectsFromArray: [NSBundle allBundles]];
+         [allBundles addObjectsFromArray: [NSBundle allFrameworks]];
+         
+         mergedManagedObjectModel = [[NSManagedObjectModel mergedModelFromBundles: [allBundles allObjects]] retain];
+         }
+         
+         return mergedManagedObjectModel;
+         */
+        return NSManagedObjectModel.mergedModel(from: Bundle.allFrameworks)!
+        
         let modelURL = Bundle.main.url(forResource: self.storeName, withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()

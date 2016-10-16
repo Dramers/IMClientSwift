@@ -32,6 +32,8 @@
 		0EDE54571D96C190003CAC90 /* ChatBuddyTextMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE54551D96C190003CAC90 /* ChatBuddyTextMsgCell.swift */; };
 		0EDE54581D96C190003CAC90 /* ChatBuddyTextMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EDE54561D96C190003CAC90 /* ChatBuddyTextMsgCell.xib */; };
 		0EDE545A1D96C32B003CAC90 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE54591D96C32B003CAC90 /* ChatViewModel.swift */; };
+		E07F01F21DB3BC110053B8C3 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F01F01DB3BC110053B8C3 /* SessionCell.swift */; };
+		E07F01F31DB3BC110053B8C3 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07F01F11DB3BC110053B8C3 /* SessionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		0EDE54551D96C190003CAC90 /* ChatBuddyTextMsgCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBuddyTextMsgCell.swift; sourceTree = "<group>"; };
 		0EDE54561D96C190003CAC90 /* ChatBuddyTextMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatBuddyTextMsgCell.xib; sourceTree = "<group>"; };
 		0EDE54591D96C32B003CAC90 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		E07F01F01DB3BC110053B8C3 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
+		E07F01F11DB3BC110053B8C3 /* SessionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				0EDE544E1D96C136003CAC90 /* SessionsTableViewController.swift */,
+				E07F01F01DB3BC110053B8C3 /* SessionCell.swift */,
+				E07F01F11DB3BC110053B8C3 /* SessionCell.xib */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 			files = (
 				0EDE54541D96C177003CAC90 /* ChatMyTextMsgCell.xib in Resources */,
 				0E860F0E1D8506230086CAF1 /* RegisterAccountViewController.xib in Resources */,
+				E07F01F31DB3BC110053B8C3 /* SessionCell.xib in Resources */,
 				0E339C081D819EFF0004E252 /* LaunchScreen.storyboard in Resources */,
 				0EDE54581D96C190003CAC90 /* ChatBuddyTextMsgCell.xib in Resources */,
 				0E860F1C1D8B80100086CAF1 /* ChatViewController.xib in Resources */,
@@ -348,6 +355,7 @@
 			files = (
 				0E860F011D84FF0D0086CAF1 /* BuddyTableViewController.swift in Sources */,
 				0E860EFC1D84FE9F0086CAF1 /* MainTabBarViewController.swift in Sources */,
+				E07F01F21DB3BC110053B8C3 /* SessionCell.swift in Sources */,
 				0E860F1B1D8B80100086CAF1 /* ChatViewController.swift in Sources */,
 				0EDE544F1D96C136003CAC90 /* SessionsTableViewController.swift in Sources */,
 				0EDE54531D96C177003CAC90 /* ChatMyTextMsgCell.swift in Sources */,
