@@ -89,7 +89,7 @@ open class LoginService: NSObject {
         }
     }
     
-    func queryUserInfo(userId: Int, complete: @escaping (UserModel?, NSError?) -> Void) {
+    open func queryUserInfo(userId: Int, complete: @escaping (UserModel?, NSError?) -> Void) {
         if loginInfo == nil {
             complete(nil, NSError(domain: "LoginServer Error queryBuddys", code: 10001, userInfo: [NSLocalizedDescriptionKey : "not login"]))
             return

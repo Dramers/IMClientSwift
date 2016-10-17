@@ -12,6 +12,9 @@ import IMClientSDK
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var toolBarView: UIView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var sendButton: UIButton!
     
     var viewModel = ChatViewModel()
     
@@ -19,6 +22,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        ChatMsgCell.registerCell(tableView: tableView)
+        
+        viewModel.reloadMsgs()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,12 +34,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - View Init
-    private let myTextMsgCellId = "ChatMyTextMsgCell"
-    private let buddyTextMsgCellId = "ChatBuddyTextMsgCell"
-    func registerCells() {
-        tableView.register(UINib(nibName: myTextMsgCellId, bundle: nil), forCellReuseIdentifier: myTextMsgCellId)
-        tableView.register(UINib(nibName: buddyTextMsgCellId, bundle: nil), forCellReuseIdentifier: buddyTextMsgCellId)
-    }
 
     /*
     // MARK: - Navigation
@@ -43,6 +44,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Response Method
+    
+    @IBAction func sendButtonPressed(_ sender: AnyObject) {
+        
+    }
 
     // MARK: - UITableView DataSource Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,17 +60,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let msgModel = viewModel.messages[indexPath.row]
         
-        if msgModel.msgContentType == 1 && msgModel.fromUserId == LoginService.shareInstance.loginInfo?.userId {
-            let cell = tableView.dequeueReusableCell(withIdentifier: myTextMsgCellId, for: indexPath)
-            return cell
-        }
-        else if msgModel.msgContentType == 1 && msgModel.fromUserId != LoginService.shareInstance.loginInfo?.userId {
-            let cell = tableView.dequeueReusableCell(withIdentifier: buddyTextMsgCellId, for: indexPath)
-            return cell
+        let cell = ChatMsgCell.create(msgModel: msgModel, tableView: tableView, indexPath: indexPath)
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+}
+
+extension ChatViewController: UITextViewDelegate {
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let nsString = textView.text as NSString?
+        let newString = nsString?.replacingCharacters(in: range, with: text)
+        if newString != "" && newString != nil {
+            sendButton.isEnabled = true
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: buddyTextMsgCellId, for: indexPath)
-            return cell
+            sendButton.isEnabled = false
         }
+        
+        return true
     }
 }

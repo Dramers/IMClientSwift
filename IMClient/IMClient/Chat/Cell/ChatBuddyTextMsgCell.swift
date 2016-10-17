@@ -7,9 +7,23 @@
 //
 
 import UIKit
+import IMClientSDK
 
-class ChatBuddyTextMsgCell: UITableViewCell {
+class ChatBuddyTextMsgCell: ChatMsgCell {
 
+    @IBOutlet weak var textContentLabel: UILabel!
+    
+    override var msgModel: MsgModel? {
+        didSet {
+            self.textContentLabel.text = msgModel?.contentStr
+            
+            LoginService.shareInstance.queryUserInfo(userId: msgModel!.fromUserId) { [unowned self] (userModel: UserModel?, error: NSError?) in
+                self.nameLabel.text = LoginService.shareInstance.loginInfo?.name
+            }
+            
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

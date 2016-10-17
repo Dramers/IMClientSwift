@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import IMClientSDK
 
-class ChatMyTextMsgCell: UITableViewCell {
+class ChatMyTextMsgCell: ChatMsgCell {
 
+    @IBOutlet weak var textContentLabel: UILabel!
+    
+    override var msgModel: MsgModel? {
+        didSet {
+            self.textContentLabel.text = msgModel?.contentStr
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.nameLabel.text = LoginService.shareInstance.loginInfo?.name
+//        self.headImageView.image
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

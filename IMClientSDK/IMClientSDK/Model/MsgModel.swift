@@ -14,7 +14,7 @@ public struct MsgModel {
     public var toUserId: Int
     public var contentStr: String
     public var msgId: String
-    public var serverReceiveDate: Date?
+    public var serverReceiveDate: Date
     public var sendDate: Date
     public var msgContentType: Int // 1为纯文本
     public var sessionId: String?
@@ -27,6 +27,7 @@ public struct MsgModel {
         self.contentStr = contentStr
         msgId = UUID().uuidString
         sendDate = Date()
+        serverReceiveDate = Date()
         self.msgContentType = msgContentType
         self.sessionId = sessionId
         state = 1
@@ -43,9 +44,7 @@ public struct MsgModel {
             "state" : NSNumber(value: state as Int)
         ] as [String : Any]
         
-        if serverReceiveDate != nil {
-            sendData["serverReceiveDate"] = NSNumber(value: serverReceiveDate!.timeIntervalSince1970 as Double)
-        }
+        sendData["serverReceiveDate"] = NSNumber(value: serverReceiveDate.timeIntervalSince1970 as Double)
         
         if sessionId != nil {
             sendData["sessionId"] = sessionId
@@ -59,5 +58,9 @@ public struct MsgModel {
 extension MsgModel {
     func insertDB() {
         MsgDBModel.insertDB(msgModel: self)
+    }
+    
+    public static func querySessionMsg(sessionId: String, start: Int, size: Int) -> [MsgModel] {
+        return MsgDBModel.queryMessages(sessionId: sessionId, start: start, size: size)
     }
 }

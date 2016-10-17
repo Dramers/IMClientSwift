@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -8,7 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="IMClient" customModuleProvider="target">
             <connections>
+                <outlet property="sendButton" destination="PT1-Vi-PfR" id="9PQ-7O-FXI"/>
                 <outlet property="tableView" destination="hJX-lc-WF4" id="x8h-cU-JzJ"/>
+                <outlet property="textView" destination="F8X-aF-wlW" id="Og7-i2-4sr"/>
+                <outlet property="toolBarView" destination="vCY-ws-R10" id="3xi-nK-TUB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,15 +27,50 @@
                         <outlet property="delegate" destination="-1" id="is6-fE-903"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCY-ws-R10">
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F8X-aF-wlW">
+                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="QSn-aq-dSt"/>
+                            </connections>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PT1-Vi-PfR">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="TD0-ID-Xv1"/>
+                            </constraints>
+                            <state key="normal" title="Send"/>
+                            <connections>
+                                <action selector="sendButtonPressed:" destination="-1" eventType="touchUpInside" id="vAt-g0-56E"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="F8X-aF-wlW" firstAttribute="leading" secondItem="vCY-ws-R10" secondAttribute="leading" constant="8" id="7Vk-ec-nZb"/>
+                        <constraint firstAttribute="trailing" secondItem="PT1-Vi-PfR" secondAttribute="trailing" constant="8" id="8Sl-uV-wie"/>
+                        <constraint firstAttribute="height" constant="46" id="9dX-uC-gZQ"/>
+                        <constraint firstAttribute="bottom" secondItem="F8X-aF-wlW" secondAttribute="bottom" constant="8" id="DFA-ln-usu"/>
+                        <constraint firstItem="PT1-Vi-PfR" firstAttribute="top" secondItem="vCY-ws-R10" secondAttribute="top" constant="8" id="ULz-Am-U5d"/>
+                        <constraint firstItem="PT1-Vi-PfR" firstAttribute="leading" secondItem="F8X-aF-wlW" secondAttribute="trailing" constant="8" id="bSm-5b-vVR"/>
+                        <constraint firstAttribute="bottom" secondItem="PT1-Vi-PfR" secondAttribute="bottom" constant="8" id="bd1-1F-iVh"/>
+                        <constraint firstItem="F8X-aF-wlW" firstAttribute="top" secondItem="vCY-ws-R10" secondAttribute="top" constant="8" id="m3n-iV-XoO"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vCY-ws-R10" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jo4-3V-isl"/>
+                <constraint firstItem="vCY-ws-R10" firstAttribute="top" secondItem="hJX-lc-WF4" secondAttribute="bottom" id="LP7-Lb-hs1"/>
                 <constraint firstItem="hJX-lc-WF4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MsN-5L-lEg"/>
-                <constraint firstAttribute="bottom" secondItem="hJX-lc-WF4" secondAttribute="bottom" id="XsP-Hh-btu"/>
                 <constraint firstItem="hJX-lc-WF4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zpx-CS-rlk"/>
+                <constraint firstAttribute="trailing" secondItem="vCY-ws-R10" secondAttribute="trailing" id="lcN-VO-eh9"/>
                 <constraint firstAttribute="trailing" secondItem="hJX-lc-WF4" secondAttribute="trailing" id="oPF-Q0-94q"/>
+                <constraint firstAttribute="bottom" secondItem="vCY-ws-R10" secondAttribute="bottom" id="zw5-ce-TRG"/>
             </constraints>
-            <point key="canvasLocation" x="367" y="361"/>
+            <point key="canvasLocation" x="-46.5" y="444.5"/>
         </view>
     </objects>
 </document>

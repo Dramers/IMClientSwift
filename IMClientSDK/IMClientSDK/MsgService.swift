@@ -85,8 +85,6 @@ open class MsgService: NSObject {
                     
                 }
             }
-            
-//            self.delegate?.receiveNewMsg(MsgModel(fromId: <#T##Int#>, toId: <#T##Int#>, contentStr: <#T##String#>, msgContentType: <#T##Int#>, sessionId: <#T##String?#>)
         })
         
         socket?.connect()

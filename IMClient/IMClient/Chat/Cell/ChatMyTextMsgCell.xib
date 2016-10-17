@@ -1,19 +1,55 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ChatMyTextMsgCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="ChatMyTextMsgCell" customModule="IMClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <frame key="frameInset" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we6-e4-vmz">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-OT-V5n">
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="IGW-7e-aSH"/>
+                            <constraint firstAttribute="height" constant="45" id="OHg-eT-Fvr"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnz-Zh-cUA">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hcW-OT-V5n" secondAttribute="trailing" constant="8" id="9JA-QI-8Fe"/>
+                    <constraint firstItem="Mnz-Zh-cUA" firstAttribute="centerX" secondItem="hcW-OT-V5n" secondAttribute="centerX" id="GmJ-gS-VeR"/>
+                    <constraint firstItem="hcW-OT-V5n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="TTA-mc-wo6"/>
+                    <constraint firstItem="we6-e4-vmz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Vj7-8T-utP"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="we6-e4-vmz" secondAttribute="bottom" constant="8" id="hXO-nc-3IJ"/>
+                    <constraint firstItem="hcW-OT-V5n" firstAttribute="leading" secondItem="we6-e4-vmz" secondAttribute="trailing" constant="8" id="kow-OF-xzV"/>
+                    <constraint firstItem="Mnz-Zh-cUA" firstAttribute="top" secondItem="hcW-OT-V5n" secondAttribute="bottom" constant="2" id="rEf-oe-i2l"/>
+                    <constraint firstItem="we6-e4-vmz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="z6R-m8-beo"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="headImageView" destination="hcW-OT-V5n" id="chM-cH-Xzf"/>
+                <outlet property="nameLabel" destination="Mnz-Zh-cUA" id="R0t-gf-noc"/>
+                <outlet property="textContentLabel" destination="we6-e4-vmz" id="d44-TB-BRC"/>
+            </connections>
+            <point key="canvasLocation" x="-88" y="3"/>
         </tableViewCell>
     </objects>
 </document>
