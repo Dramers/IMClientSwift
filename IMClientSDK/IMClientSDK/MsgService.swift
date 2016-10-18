@@ -60,12 +60,12 @@ open class MsgService: NSObject {
                     
                     if msgModel.sessionId == nil {
                         
-                        if var sessinModel = SessionModel(sessionId: "\(msgModel.fromUserId)") {
-                            sessinModel.lastMsgContent = msgModel.contentStr
-                            sessinModel.unreadCount += 1
-                            sessinModel.updateDB()
+                        if var sessionModel = SessionModel(sessionId: "\(msgModel.fromUserId)") {
+                            sessionModel.lastMsgContent = msgModel.contentStr
+                            sessionModel.unreadCount += 1
+                            sessionModel.updateDB()
                             
-                            self.notificationReceiveNewMsg(msgModel: msgModel)
+                            self.notificationReceiveNewMsg(msgModel: msgModel, sessionModel: sessionModel)
                         }
                         else {
 //                            if let userModel =
@@ -74,8 +74,10 @@ open class MsgService: NSObject {
                                 if userModel != nil {
                                     let sessionModel = SessionModel(type: SessionType.buddy, sessionId: "\(msgModel.fromUserId)", sessionName: "\(userModel!.name)", unreadCount: 0, lastMsgContent: msgModel.contentStr)
                                     sessionModel.insertDB()
+                                    
+                                    self.notificationReceiveNewMsg(msgModel: msgModel, sessionModel: sessionModel)
                                 }
-                                self.notificationReceiveNewMsg(msgModel: msgModel)
+                                
                             })
                             
                         }
@@ -90,14 +92,36 @@ open class MsgService: NSObject {
         socket?.connect()
     }
     
-    func notificationReceiveNewMsg(msgModel: MsgModel) {
+    func notificationReceiveNewMsg(msgModel: MsgModel, sessionModel: SessionModel) {
         self.delegate?.receiveNewMsg(msgModel)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: msgModel, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: msgModel, userInfo: ["session" : sessionModel])
     }
     
     open func sendMessage(_ model: MsgModel, complete: ((NSError?) -> Void)?) {
         socket?.emit("message", model.toSendData() as! SocketData)
         model.insertDB()
+        if var sessionModel = sessionModel(msgModel: model) {
+            sessionModel.lastMsgContent = model.contentStr
+            sessionModel.updateDB()
+            
+            self.notificationReceiveNewMsg(msgModel: model, sessionModel: sessionModel)
+        }
+    }
+    
+    func sessionModel(msgModel: MsgModel) -> SessionModel? {
+        if msgModel.sessionId == nil {
+            
+            if let sessinModel = SessionModel(sessionId: "\(msgModel.fromUserId)") {
+                return sessinModel
+            }
+        }
+        else {
+            if let sessinModel = SessionModel(sessionId: msgModel.sessionId!) {
+                return sessinModel
+            }
+        }
+        
+        return nil
     }
 }
 

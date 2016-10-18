@@ -13,6 +13,10 @@ class SessionsTableViewController: UITableViewController {
     
     var sessionModels: [SessionModel] = SessionModel.queryAllSession()
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,7 +81,10 @@ class SessionsTableViewController: UITableViewController {
         
         let controller = ChatViewController()
         controller.viewModel.sessionId = sessionModel.sessionId
+        
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
+        
     }
 
     /*

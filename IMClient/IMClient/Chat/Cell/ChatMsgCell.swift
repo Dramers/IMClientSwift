@@ -27,7 +27,10 @@ class ChatMsgCell: UITableViewCell {
     class func create(msgModel: MsgModel, tableView: UITableView, indexPath: IndexPath) -> ChatMsgCell? {
         
         if let cellId = cellId(fromUserId: msgModel.fromUserId, msgContentType: msgModel.msgContentType) {
-            return tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ChatMsgCell
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ChatMsgCell
+            cell?.msgModel = msgModel
+            return cell
         }
         
         return nil

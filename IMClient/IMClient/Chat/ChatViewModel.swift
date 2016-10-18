@@ -23,6 +23,11 @@ class ChatViewModel: NSObject {
         start = size
     }
     
+    func reloadCurrentMsgs() {
+        self.messages = MsgModel.querySessionMsg(sessionId: sessionId, start: 0, size: messages.count + 1)
+        start += 1
+    }
+    
     func loadMoreMsgs() {
         let oldMsgs = MsgModel.querySessionMsg(sessionId: sessionId, start: start, size: size)
         

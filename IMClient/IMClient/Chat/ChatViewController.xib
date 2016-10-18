@@ -12,6 +12,7 @@
                 <outlet property="tableView" destination="hJX-lc-WF4" id="x8h-cU-JzJ"/>
                 <outlet property="textView" destination="F8X-aF-wlW" id="Og7-i2-4sr"/>
                 <outlet property="toolBarView" destination="vCY-ws-R10" id="3xi-nK-TUB"/>
+                <outlet property="toolBarViewBottomContrains" destination="zw5-ce-TRG" id="9wO-xw-kxa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,7 +33,7 @@
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F8X-aF-wlW">
                             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="QSn-aq-dSt"/>
                             </connections>

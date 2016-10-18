@@ -15,8 +15,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var toolBarViewBottomContrains: NSLayoutConstraint!
     
     var viewModel = ChatViewModel()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,47 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         viewModel.reloadMsgs()
         tableView.reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.showKeyboardNoti(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.hideKeyboardNoti(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.showKeyboardNoti(noti:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.receiveNewMessage), name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: nil)
+    }
+    
+    func keyboardChange(noti: Notification) {
+        
+        let userInfo = noti.userInfo!
+        if let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = value.cgRectValue
+            self.toolBarViewBottomContrains.constant = keyboardRect.size.height
+        }
+    }
+    
+    func showKeyboardNoti(noti: Notification) {
+        let userInfo = noti.userInfo!
+        if let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = value.cgRectValue
+            self.toolBarViewBottomContrains.constant = keyboardRect.size.height
+        }
+    }
+    
+    func hideKeyboardNoti(noti: Notification) {
+        self.toolBarViewBottomContrains.constant = 0
+    }
+    
+    // MARK: - receive New Message
+    func receiveNewMessage(noti: Notification)  {
+        print("notification object: \(noti.object!)")
+        if let session = noti.userInfo?["session"] as? SessionModel {
+            if session.sessionId == self.viewModel.sessionId {
+                
+                self.viewModel.reloadCurrentMsgs()
+                self.tableView.reloadData()
+            }
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +95,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func sendButtonPressed(_ sender: AnyObject) {
         
+        MsgService.shareInstance.sendMessage(self.viewModel.textMsg(text: self.textView.text)) { (error: NSError?) in
+            
+        }
+        
+        self.textView.text = ""
+        self.textView.resignFirstResponder()
     }
 
     // MARK: - UITableView DataSource Delegate
