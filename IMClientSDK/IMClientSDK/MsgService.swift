@@ -56,9 +56,12 @@ open class MsgService: NSObject {
                     msgModel.serverReceiveDate = Date(timeIntervalSince1970: info["serverReceiveDate"] as! TimeInterval)
                     msgModel.state = info["state"] as! Int
                     
-                    msgModel.insertDB()
+                    
                     
                     if msgModel.sessionId == nil {
+                        
+                        msgModel.sessionId = "\(msgModel.fromUserId)"
+                        msgModel.insertDB()
                         
                         if var sessionModel = SessionModel(sessionId: "\(msgModel.fromUserId)") {
                             sessionModel.lastMsgContent = msgModel.contentStr
@@ -81,8 +84,12 @@ open class MsgService: NSObject {
                             })
                             
                         }
+                        
+                        
                     }
-                    
+                    else {
+                        msgModel.insertDB()
+                    }
                     
                     
                 }
@@ -99,19 +106,23 @@ open class MsgService: NSObject {
     
     open func sendMessage(_ model: MsgModel, complete: ((NSError?) -> Void)?) {
         socket?.emit("message", model.toSendData() as! SocketData)
-        model.insertDB()
-        if var sessionModel = sessionModel(msgModel: model) {
+        
+        if var sessionModel = sessionModel(msgModel: model, isSend: true) {
+            
             sessionModel.lastMsgContent = model.contentStr
             sessionModel.updateDB()
             
-            self.notificationReceiveNewMsg(msgModel: model, sessionModel: sessionModel)
+            var dbModel = model
+            dbModel.sessionId = sessionModel.sessionId
+            dbModel.insertDB()
+            self.notificationReceiveNewMsg(msgModel: dbModel, sessionModel: sessionModel)
         }
     }
     
-    func sessionModel(msgModel: MsgModel) -> SessionModel? {
+    func sessionModel(msgModel: MsgModel, isSend: Bool) -> SessionModel? {
         if msgModel.sessionId == nil {
             
-            if let sessinModel = SessionModel(sessionId: "\(msgModel.fromUserId)") {
+            if let sessinModel = SessionModel(sessionId: "\(isSend ? msgModel.toUserId : msgModel.fromUserId)") {
                 return sessinModel
             }
         }

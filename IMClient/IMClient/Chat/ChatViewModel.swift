@@ -40,8 +40,11 @@ class ChatViewModel: NSObject {
         var toId: Int = 0
         if sessionModel.type == .buddy {
             toId = Int(sessionModel.sessionId)!
+            return MsgModel.init(fromId: LoginService.shareInstance.loginInfo!.userId, toId: toId, contentStr: text, msgContentType: 1, sessionId: nil)
+        }
+        else {
+            return MsgModel.init(fromId: LoginService.shareInstance.loginInfo!.userId, toId: toId, contentStr: text, msgContentType: 1, sessionId: sessionId)
         }
         
-        return MsgModel.init(fromId: LoginService.shareInstance.loginInfo!.userId, toId: toId, contentStr: text, msgContentType: 1, sessionId: sessionId)
     }
 }
