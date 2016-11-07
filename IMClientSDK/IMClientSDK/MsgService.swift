@@ -15,11 +15,15 @@ public protocol MsgServiceDelegate {
 open class MsgService: NSObject {
     open static let shareInstance = MsgService()
     fileprivate var socket: SocketIOClient?
+    fileprivate var userId: Int?
     
     open static let receiveMessageNotificationName = "kreceiveMessageNotificationName"
     open var delegate: MsgServiceDelegate?
     
     open func connect(_ socketURLStr: String, userId: Int) {
+        
+        self.userId = userId
+        
         socket = SocketIOClient(socketURL: URL(string: socketURLStr)! ,config: [.log(true), .forcePolling(true)])
         
         socket?.on("connect") { [unowned self] data, ack in
@@ -133,6 +137,20 @@ open class MsgService: NSObject {
         }
         
         return nil
+    }
+    
+    open func createGroup(name: String, memberIds:[Int], complete: @escaping (NSError?) -> Void ) {
+        
+        if self.userId == nil {
+            return
+        }
+        
+        socket?.once("createGroup", callback: { (info: [Any], ack: SocketAckEmitter) in
+            print("xxxxx\(info)");
+            complete(nil)
+        })
+        
+        socket?.emit("createGroup", with: [["groupName" : name, "memberIds" : memberIds, "userId" : self.userId!]])
     }
 }
 

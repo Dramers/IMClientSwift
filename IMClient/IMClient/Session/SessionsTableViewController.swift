@@ -29,6 +29,8 @@ class SessionsTableViewController: UITableViewController {
         self.title = "会话"
         
         NotificationCenter.default.addObserver(self, selector: #selector(SessionsTableViewController.receiveNewMessage), name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: nil)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SessionsTableViewController.createGroupItemPressed))
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +38,14 @@ class SessionsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Method Response
+    func createGroupItemPressed() {
+        MsgService.shareInstance.createGroup(name: "xxx", memberIds: [1]) { (error: NSError?) in
+            print("error: \(error)")
+        }
+
+    }
+
     // MARK: - receive New Message
     func receiveNewMessage(noti: Notification)  {
         print("notification object: \(noti.object!)")
