@@ -40,9 +40,12 @@ class SessionsTableViewController: UITableViewController {
     
     // MARK: - Method Response
     func createGroupItemPressed() {
-        MsgService.shareInstance.createGroup(name: "xxx", memberIds: [1]) { (error: NSError?) in
-            print("error: \(error)")
+        GroupService.shareInstance.createGroup(name: "groupName", memberIds: [1], groupHeadImage: nil) { (error: Error?) in
+            
         }
+//        GroupService.shareInstance.createGroup(name: "xxx", memberIds: [1]) { (error: NSError?) in
+//            print("error: \(error)")
+//        }
 
     }
 
