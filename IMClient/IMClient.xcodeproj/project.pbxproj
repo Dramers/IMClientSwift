@@ -35,6 +35,9 @@
 		E0788B421DB50F8F00EE2E01 /* ChatMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0788B411DB50F8F00EE2E01 /* ChatMsgCell.swift */; };
 		E07F01F21DB3BC110053B8C3 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F01F01DB3BC110053B8C3 /* SessionCell.swift */; };
 		E07F01F31DB3BC110053B8C3 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07F01F11DB3BC110053B8C3 /* SessionCell.xib */; };
+		E0959DD91DD6B4CB000C3697 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0959DD81DD6B4CB000C3697 /* GroupTableViewController.swift */; };
+		E0959DDC1DD6B8DA000C3697 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0959DDA1DD6B8DA000C3697 /* GroupCell.swift */; };
+		E0959DDD1DD6B8DA000C3697 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0959DDB1DD6B8DA000C3697 /* GroupCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		E0788B411DB50F8F00EE2E01 /* ChatMsgCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMsgCell.swift; sourceTree = "<group>"; };
 		E07F01F01DB3BC110053B8C3 /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		E07F01F11DB3BC110053B8C3 /* SessionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
+		E0959DD81DD6B4CB000C3697 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		E0959DDA1DD6B8DA000C3697 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		E0959DDB1DD6B8DA000C3697 /* GroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,7 @@
 			children = (
 				0E339BFB1D819EFF0004E252 /* AppDelegate.swift */,
 				0E860EFA1D84FE820086CAF1 /* Main */,
+				E0959DD61DD6B4A2000C3697 /* Group */,
 				0E860EFD1D84FED40086CAF1 /* Buddy */,
 				0EDE50B41D96C0D100629DFF /* Session */,
 				0E860EFE1D84FED40086CAF1 /* Chat */,
@@ -250,6 +257,16 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
+		E0959DD61DD6B4A2000C3697 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				E0959DD81DD6B4CB000C3697 /* GroupTableViewController.swift */,
+				E0959DDA1DD6B8DA000C3697 /* GroupCell.swift */,
+				E0959DDB1DD6B8DA000C3697 /* GroupCell.xib */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EDE54541D96C177003CAC90 /* ChatMyTextMsgCell.xib in Resources */,
+				E0959DDD1DD6B8DA000C3697 /* GroupCell.xib in Resources */,
 				0E860F0E1D8506230086CAF1 /* RegisterAccountViewController.xib in Resources */,
 				E07F01F31DB3BC110053B8C3 /* SessionCell.xib in Resources */,
 				0E339C081D819EFF0004E252 /* LaunchScreen.storyboard in Resources */,
@@ -363,7 +381,9 @@
 				0E860F1B1D8B80100086CAF1 /* ChatViewController.swift in Sources */,
 				0EDE544F1D96C136003CAC90 /* SessionsTableViewController.swift in Sources */,
 				0EDE54531D96C177003CAC90 /* ChatMyTextMsgCell.swift in Sources */,
+				E0959DD91DD6B4CB000C3697 /* GroupTableViewController.swift in Sources */,
 				0E339C2E1D81A2DB0004E252 /* LoginViewController.swift in Sources */,
+				E0959DDC1DD6B8DA000C3697 /* GroupCell.swift in Sources */,
 				0E860F171D8B695D0086CAF1 /* BuddyInfoViewController.swift in Sources */,
 				0E339BFC1D819EFF0004E252 /* AppDelegate.swift in Sources */,
 				0EDE545A1D96C32B003CAC90 /* ChatViewModel.swift in Sources */,

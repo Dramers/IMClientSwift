@@ -29,10 +29,13 @@ class MainTabBarViewController: UITabBarController {
         // Buddy
         let buddyController = navigationControoler(controller: BuddyTableViewController(), title: "好友", image: nil, selectedImage: nil)
         
+        // Group
+        let groupController = navigationControoler(controller: GroupTableViewController(), title: "群组", image: nil, selectedImage: nil)
+        
         // My
         let myController = navigationControoler(controller: MyInfoViewController(), title: "我的", image: nil, selectedImage: nil)
         
-        self.viewControllers = [sessionController, buddyController, myController]
+        self.viewControllers = [sessionController, buddyController, groupController, myController]
     }
     
     func navigationControoler(controller: UIViewController, title: String?, image: UIImage?, selectedImage: UIImage?) -> UINavigationController {

@@ -30,7 +30,7 @@ class SessionsTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(SessionsTableViewController.receiveNewMessage), name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: nil)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SessionsTableViewController.createGroupItemPressed))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(SessionsTableViewController.createNewSessionItemPressed))
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,7 @@ class SessionsTableViewController: UITableViewController {
     }
     
     // MARK: - Method Response
-    func createGroupItemPressed() {
+    func createNewSessionItemPressed() {
         GroupService.shareInstance.createGroup(name: "groupName", memberIds: [1], groupHeadImage: nil) { (error: Error?) in
             
         }
