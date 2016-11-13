@@ -31,7 +31,7 @@ public struct GroupModel {
             }
         }
         
-        updateDate = info["updateDate"] as! Date
-        createDate = info["createDate"] as! Date
+        updateDate = Date(timeIntervalSince1970: TimeInterval(info["updateDate"] as! NSNumber))
+        createDate = Date(timeIntervalSince1970: TimeInterval(info["createDate"] as! NSNumber))
     }
 }

@@ -83,8 +83,8 @@ open class GroupService: NSObject {
         send(data: [
             "groupName" : name,
             "memberIds" : memberIds,
-            "groupHeadImage" : groupHeadImage == nil ? groupHeadImage! : "",
-            ], eventName: "queryGroupList", complete: complete)
+            "groupHeadImage" : groupHeadImage == nil ? "" : groupHeadImage!,
+            ], eventName: "createGroup", complete: complete)
     }
     
     open func queryGroupList(complete: @escaping ([GroupModel]?, Error?) -> Void) {

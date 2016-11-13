@@ -41,7 +41,7 @@ class GroupTableViewController: UITableViewController {
     // MARK: - Method Response
     func createGroupItemPressed() {
         
-        Alert.showAlert(title: "", message: nil, style: UIAlertViewStyle.plainTextInput, cancelButtonTitle: "取消", complete: { [unowned self] (alert: Alert, buttonIndex: Int) in
+        Alert.showAlert(title: "请输入要创建的群组名称", message: nil, style: UIAlertViewStyle.plainTextInput, cancelButtonTitle: "取消", complete: { [unowned self] (alert: Alert, buttonIndex: Int) in
             
             if buttonIndex != 0 {
                 let textField = alert.textField(index: 0)!
@@ -57,7 +57,7 @@ class GroupTableViewController: UITableViewController {
             }
             
             
-        }, controller: self, otherButtonTitles: "确定")
+            }, controller: self, otherButtonTitles: "确定");
     }
     
     func refreshGroupDatas() {

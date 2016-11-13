@@ -30,6 +30,8 @@ open class MsgService: NSObject {
             print ("socket connected")
             
             self.socket?.emit("getUserId", userId)
+            
+            GroupService.shareInstance.listenEvent()
         }
         socket?.on("disconnect", callback: { (data: [Any], ack: SocketAckEmitter) in
             print("socket disconnect")
