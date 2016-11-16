@@ -84,6 +84,13 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
     }
     @IBAction func sendMsgButtonPressed(sender: AnyObject) {
         
+        let sessionModel = SessionModel(userModel: buddyInfo!)
+        
+        let controller = ChatViewController()
+        controller.viewModel.sessionModel = sessionModel
+        
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     // UITableView DataSource Delegate
