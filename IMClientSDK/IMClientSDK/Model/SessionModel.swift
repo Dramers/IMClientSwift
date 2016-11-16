@@ -48,6 +48,34 @@ extension SessionModel {
         }
     }
     
+    public init(userModel: UserModel) {
+        
+        if let sessionModel = SessionDBModel.querySession(sessionId: "\(userModel.userId)") {
+            self = sessionModel
+        }
+        else {
+            type = .buddy
+            sessionId = "\(userModel.userId)"
+            sessionName = userModel.name
+            unreadCount = 0
+            lastMsgContent = ""
+        }
+    }
+    
+    public init(groupModel: GroupModel) {
+        
+        if let sessionModel = SessionDBModel.querySession(sessionId: groupModel.groupId) {
+            self = sessionModel
+        }
+        else {
+            type = .group
+            sessionId = groupModel.groupId
+            sessionName = groupModel.groupName
+            unreadCount = 0
+            lastMsgContent = ""
+        }
+    }
+    
     func insertDB() {
         SessionDBModel.insertDB(model: self)
     }

@@ -96,8 +96,6 @@ open class MsgService: NSObject {
                     else {
                         msgModel.insertDB()
                     }
-                    
-                    
                 }
             }
         })

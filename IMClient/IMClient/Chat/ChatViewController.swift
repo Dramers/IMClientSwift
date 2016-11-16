@@ -64,7 +64,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func receiveNewMessage(noti: Notification)  {
         print("notification object: \(noti.object!)")
         if let session = noti.userInfo?["session"] as? SessionModel {
-            if session.sessionId == self.viewModel.sessionId {
+            if session.sessionId == self.viewModel.sessionModel!.sessionId {
                 
                 self.viewModel.reloadCurrentMsgs()
                 self.tableView.reloadData()

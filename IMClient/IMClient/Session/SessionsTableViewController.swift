@@ -93,7 +93,7 @@ class SessionsTableViewController: UITableViewController {
         let sessionModel = sessionModels[indexPath.row]
         
         let controller = ChatViewController()
-        controller.viewModel.sessionId = sessionModel.sessionId
+        controller.viewModel.sessionModel = sessionModel
         
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)

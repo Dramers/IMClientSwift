@@ -49,9 +49,19 @@ open class LoginService: NSObject {
         loginInfo = nil
     }
     
-    open func searchUsers(_ keyword: String, complete: @escaping (([[String : AnyObject]]?, NSError?) -> Void)) {
+    open func searchUsers(_ keyword: String, complete: @escaping (([UserModel]?, NSError?) -> Void)) {
         Request.sendJsonRequest("\(loginServerAddress)searchBuddyKeyword", jsonInfo: ["keyword" : keyword]) { (info: AnyObject?, error: NSError?) in
-            complete(info as? [[String : AnyObject]], error)
+            
+            var userModels: [UserModel]? = nil
+            
+            if let userInfos = info as? [[String : AnyObject]] {
+                userModels = []
+                for userInfo in userInfos {
+                    userModels?.append(UserModel(info: userInfo))
+                }
+            }
+            
+            complete(userModels, error)
         }
     }
     
@@ -78,14 +88,24 @@ open class LoginService: NSObject {
         }
     }
     
-    open func queryBuddys(_ complete: @escaping (([[String : AnyObject]]?, NSError?) -> Void)) {
+    open func queryBuddys(_ complete: @escaping (([UserModel]?, NSError?) -> Void)) {
         if loginInfo == nil {
             complete(nil, NSError(domain: "LoginServer Error queryBuddys", code: 10001, userInfo: [NSLocalizedDescriptionKey : "not login"]))
             return
         }
         
         Request.sendJsonRequest("\(loginServerAddress)queryBuddys", jsonInfo: ["userId" : "\(self.loginInfo!.userId)"]) { (info: AnyObject?, error: NSError?) in
-            complete(info as? [[String : AnyObject]], error)
+            
+            var userModels: [UserModel]? = nil
+            
+            if let userInfos = info as? [[String : AnyObject]] {
+                userModels = []
+                for userInfo in userInfos {
+                    userModels?.append(UserModel(info: userInfo))
+                }
+            }
+            
+            complete(userModels, error)
         }
     }
     
@@ -123,5 +143,9 @@ public struct LoginInfo {
         self.password = password
         self.buddyIds = loginInfo["buddyIds"] as! [Int];
         self.msgServerAddress = loginInfo["msgServerAddress"] as? String
+    }
+    
+    public func loginUserModel() -> UserModel {
+        return UserModel(userId: userId, name: name, headURLStr: nil)
     }
 }

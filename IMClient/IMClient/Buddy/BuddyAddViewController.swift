@@ -11,7 +11,7 @@ import IMClientSDK
 
 class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
-    var searchResults : [[String : AnyObject]] = []
+    var searchResults : [UserModel] = []
 
     var searchController: UISearchController?
     override func viewDidLoad() {
@@ -59,8 +59,8 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuddyAddCell", for: indexPath)
         
         // Configure the cell...
-        var info = searchResults[indexPath.row]
-        cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)  username: \(info["username"] as! String)"
+        let info = searchResults[indexPath.row]
+        cell.textLabel?.text = "\(info.name)  userId: \(info.userId)"
         
         return cell
     }
@@ -82,7 +82,7 @@ class BuddyAddViewController: UITableViewController, UISearchBarDelegate, UISear
     
     // MARK: - UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        LoginService.shareInstance.searchUsers(searchBar.text!) { [unowned self] (results: [[String : AnyObject]]?, error: NSError?) in
+        LoginService.shareInstance.searchUsers(searchBar.text!) { [unowned self] (results: [UserModel]?, error: NSError?) in
             
             if error == nil {
                 self.searchResults = results!

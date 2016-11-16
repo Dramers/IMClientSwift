@@ -43,19 +43,18 @@ class GroupTableViewController: UITableViewController {
         
         Alert.showAlert(title: "请输入要创建的群组名称", message: nil, style: UIAlertViewStyle.plainTextInput, cancelButtonTitle: "取消", complete: { [unowned self] (alert: Alert, buttonIndex: Int) in
             
-            if buttonIndex != 0 {
-                let textField = alert.textField(index: 0)!
-                
-                let groupName = textField.text == nil ? "" : textField.text!
-                
-                GroupService.shareInstance.createGroup(name: groupName, memberIds: [1], groupHeadImage: nil) { (error: Error?) in
+                if buttonIndex != 0 {
+                    let textField = alert.textField(index: 0)!
                     
-                    if error == nil {
-                        self.refreshGroupDatas()
+                    let groupName = textField.text == nil ? "" : textField.text!
+                    
+                    GroupService.shareInstance.createGroup(name: groupName, memberIds: [1], groupHeadImage: nil) { (error: Error?) in
+                        
+                        if error == nil {
+                            self.refreshGroupDatas()
+                        }
                     }
                 }
-            }
-            
             
             }, controller: self, otherButtonTitles: "确定");
     }

@@ -12,6 +12,7 @@ public  struct UserModel {
     public  var userId: Int
     public  var name: String
     public  var headURLStr: String?
+    public  var buddyIds: [Int] = []
     
     public  init(userId: Int, name: String, headURLStr: String?) {
         self.userId = userId
@@ -23,6 +24,11 @@ public  struct UserModel {
         userId = info["userId"] as! Int
         name = info["name"] as! String
         headURLStr = info["headURLStr"] as? String
+        
+        if let buddys = info["buddyIds"] as? [Int] {
+            buddyIds = buddys
+        }
+        
     }
 }
 

@@ -17,7 +17,7 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isBuddyButton: UIButton!
     
-    var buddyInfo: [String: AnyObject]?
+    var buddyInfo: UserModel?
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -29,12 +29,11 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
         
         if LoginService.shareInstance.loginInfo != nil && buddyInfo != nil {
             if let buddyIds = LoginService.shareInstance.loginInfo {
-                isBuddyButton.isSelected = buddyIds.buddyIds.contains(buddyInfo!["userId"] as! Int)
+                isBuddyButton.isSelected = buddyIds.buddyIds.contains(buddyInfo!.userId)
             }
             
-            userIdLabel.text = "\(buddyInfo!["userId"] as! Int)"
-            usernameLabel.text = buddyInfo?["username"] as? String
-            nameLabel.text = buddyInfo?["name"] as? String
+            userIdLabel.text = "\(buddyInfo!.userId)"
+            nameLabel.text = buddyInfo!.name
         }
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BuddyCell")
@@ -64,7 +63,7 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         if isBuddyButton.isSelected {
-            LoginService.shareInstance.removeBuddys([buddyInfo!["userId"] as! Int], complete: { [unowned self] (error: NSError?) in
+            LoginService.shareInstance.removeBuddys([buddyInfo!.userId], complete: { [unowned self] (error: NSError?) in
                 if error != nil {
                     Alert.showError(error: error!)
                 }
@@ -73,7 +72,7 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
                 }
             })
         }else {
-            LoginService.shareInstance.addBuddys([buddyInfo!["userId"] as! Int], complete: { (error: NSError?) in
+            LoginService.shareInstance.addBuddys([buddyInfo!.userId], complete: { (error: NSError?) in
                 if error != nil {
                     Alert.showError(error: error!)
                 }
@@ -84,17 +83,13 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     @IBAction func sendMsgButtonPressed(sender: AnyObject) {
-        let msgModel = MsgModel(fromId: LoginService.shareInstance.loginInfo!.userId, toId: buddyInfo!["userId"] as! Int, contentStr: "helloWorld", msgContentType: 1, sessionId: nil)
-//        MsgModel()
-        MsgService.shareInstance.sendMessage(msgModel) { (error: NSError?) in
-            
-        }
+        
     }
     
     // UITableView DataSource Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  buddyInfo != nil {
-            return (self.buddyInfo!["buddyIds"] as! [Int]).count
+            return (self.buddyInfo!.buddyIds).count
         }
         return 0
     }
@@ -102,7 +97,7 @@ class BuddyInfoViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuddyCell", for: indexPath)
         
-        let info = (self.buddyInfo!["buddyIds"] as! [Int])[indexPath.row]
+        let info = (self.buddyInfo!.buddyIds)[indexPath.row]
         cell.textLabel?.text = "userId: \(info))"
         
         return cell

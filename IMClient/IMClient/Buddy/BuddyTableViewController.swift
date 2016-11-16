@@ -11,7 +11,7 @@ import IMClientSDK
 
 class BuddyTableViewController: UITableViewController {
 
-    var buddys: [[String: AnyObject]] = []
+    var buddys: [UserModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class BuddyTableViewController: UITableViewController {
     
     // Refresh Datas
     func refreshDatas()  {
-        LoginService.shareInstance.queryBuddys { [unowned self] (queryBuddys: [[String : AnyObject]]?, error: NSError?) in
+        LoginService.shareInstance.queryBuddys { [unowned self] (queryBuddys: [UserModel]?, error: NSError?) in
             if queryBuddys != nil {
                 self.buddys = queryBuddys!
                 self.tableView.reloadData()
@@ -71,8 +71,8 @@ class BuddyTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuddyCell", for: indexPath)
         
         // Configure the cell...
-        var info = buddys[indexPath.row]
-        cell.textLabel?.text = "\(info["name"] as! String)  userId: \(info["userId"] as! Int)  username: \(info["username"] as! String)"
+        let info = buddys[indexPath.row]
+        cell.textLabel?.text = "\(info.name)  userId: \(info.userId)"
         
         return cell
     }
