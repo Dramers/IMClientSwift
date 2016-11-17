@@ -93,6 +93,17 @@ class GroupTableViewController: UITableViewController {
     }
  
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let groupModel = datas[indexPath.row]
+        let sessionModel = SessionModel(groupModel: groupModel)
+        
+        let controller = ChatViewController()
+        controller.viewModel.sessionModel = sessionModel
+        
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
