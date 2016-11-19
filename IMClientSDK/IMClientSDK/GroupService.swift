@@ -127,7 +127,7 @@ open class GroupService: NSObject {
         send(data: [
             "groupId" : groupId,
             "groupName" : groupName,
-            "groupHeadImage" : groupHeadImage == nil ? groupHeadImage! : "",
+            "groupHeadImage" : groupHeadImage == nil ? "" : groupHeadImage!,
             "creator" : creator
             ], eventName: "updateGroupInfo", complete: complete)
     }

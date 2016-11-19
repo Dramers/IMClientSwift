@@ -40,7 +40,25 @@ class GroupInfoViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Response Method
     func updateGroupInfoItemPressed() {
-        
+        Alert.showAlert(title: "修改群名", message: "输入您要修改的名字", style: UIAlertViewStyle.plainTextInput, textFieldDefaultTexts: [self.viewModel!.groupName], cancelButtonTitle: "取消", complete: { (alert: Alert, index: Int) in
+            
+            if let textField = alert.textField(index: 0) {
+                
+                if index == 1 {
+                    
+                    let newName = textField.text!
+                    GroupService.shareInstance.updateGroupInfo(groupId: self.viewModel!.groupId, groupName: newName, groupHeadImage: nil, creator: self.viewModel!.creator, complete: { (error: Error?) in
+                        
+                        if error == nil {
+                            self.viewModel?.groupName = newName
+                            self.title = newName
+                        }
+                    })
+                }
+            }
+            
+            
+        }, controller: self, otherButtonTitles: "确定")
     }
     
     func selectBuddyItemPressed() {
