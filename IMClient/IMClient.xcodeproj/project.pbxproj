@@ -40,6 +40,7 @@
 		E0959DD91DD6B4CB000C3697 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0959DD81DD6B4CB000C3697 /* GroupTableViewController.swift */; };
 		E0959DDC1DD6B8DA000C3697 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0959DDA1DD6B8DA000C3697 /* GroupCell.swift */; };
 		E0959DDD1DD6B8DA000C3697 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0959DDB1DD6B8DA000C3697 /* GroupCell.xib */; };
+		E0A6B2FD1DE05EA900FCD8AE /* BuddySelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A6B2FC1DE05EA900FCD8AE /* BuddySelectController.swift */; };
 		E0B5B39A1DDDF85A00EF497F /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5B3981DDDF85A00EF497F /* GroupMemberCell.swift */; };
 		E0B5B39B1DDDF85A00EF497F /* GroupMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B5B3991DDDF85A00EF497F /* GroupMemberCell.xib */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		E0959DD81DD6B4CB000C3697 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		E0959DDA1DD6B8DA000C3697 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E0959DDB1DD6B8DA000C3697 /* GroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
+		E0A6B2FC1DE05EA900FCD8AE /* BuddySelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddySelectController.swift; sourceTree = "<group>"; };
 		E0B5B3981DDDF85A00EF497F /* GroupMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberCell.swift; sourceTree = "<group>"; };
 		E0B5B3991DDDF85A00EF497F /* GroupMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupMemberCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 				0E860F121D883F560086CAF1 /* BuddyAddViewController.swift */,
 				0E860F151D8B695D0086CAF1 /* BuddyInfoViewController.swift */,
 				0E860F161D8B695D0086CAF1 /* BuddyInfoViewController.xib */,
+				E0A6B2FC1DE05EA900FCD8AE /* BuddySelectController.swift */,
 			);
 			path = Buddy;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				E09278001DDC9FC300BF5D26 /* GroupInfoViewController.swift in Sources */,
 				E0959DDC1DD6B8DA000C3697 /* GroupCell.swift in Sources */,
 				0E860F171D8B695D0086CAF1 /* BuddyInfoViewController.swift in Sources */,
+				E0A6B2FD1DE05EA900FCD8AE /* BuddySelectController.swift in Sources */,
 				0E339BFC1D819EFF0004E252 /* AppDelegate.swift in Sources */,
 				0EDE545A1D96C32B003CAC90 /* ChatViewModel.swift in Sources */,
 				0E860F091D8500540086CAF1 /* MyInfoViewController.swift in Sources */,

@@ -21,22 +21,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-Va-l5t">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="uqU-md-Bl7"/>
                         <outlet property="delegate" destination="-1" id="GFD-sJ-qi3"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDW-mD-gxp">
+                    <rect key="frame" x="16" y="598" width="343" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="OnW-RJ-fg2"/>
+                    </constraints>
+                    <state key="normal" title="退出群组"/>
+                    <connections>
+                        <action selector="exitGroupButtonPressed:" destination="-1" eventType="touchUpInside" id="QDo-EJ-Hed"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="1DJ-Va-l5t" secondAttribute="trailing" id="PpC-XZ-ZGQ"/>
                 <constraint firstItem="1DJ-Va-l5t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZTl-k5-A7P"/>
-                <constraint firstAttribute="bottom" secondItem="1DJ-Va-l5t" secondAttribute="bottom" id="dBy-FN-Cb8"/>
+                <constraint firstAttribute="bottom" secondItem="mDW-mD-gxp" secondAttribute="bottom" constant="20" id="amA-bJ-Yl6"/>
+                <constraint firstItem="mDW-mD-gxp" firstAttribute="top" secondItem="1DJ-Va-l5t" secondAttribute="bottom" constant="8" id="mS4-yj-NsC"/>
                 <constraint firstItem="1DJ-Va-l5t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nCG-JQ-DmY"/>
+                <constraint firstAttribute="trailing" secondItem="mDW-mD-gxp" secondAttribute="trailing" constant="16" id="sYB-U0-wmy"/>
+                <constraint firstItem="mDW-mD-gxp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="t2H-bA-wqh"/>
             </constraints>
-            <point key="canvasLocation" x="-242" y="-83"/>
+            <point key="canvasLocation" x="-242.5" y="-83.5"/>
         </view>
     </objects>
 </document>

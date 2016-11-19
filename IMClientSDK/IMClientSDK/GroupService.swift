@@ -12,6 +12,8 @@ open class GroupService: NSObject {
     
     open static let shareInstance = GroupService()
     
+    open static let groupDeleteNotification = "kGroupDeleteNotification"
+    
     var tasks: [String : Any] = [:]
     
     func listenEvent() {
@@ -73,6 +75,26 @@ open class GroupService: NSObject {
             if let (_ , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (Error?) -> Void {
                     complete(err)
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: GroupService.groupDeleteNotification), object: nil)
+                }
+            }
+        })
+        
+        MsgService.shareInstance.socket?.on("queryGroupInfo", callback: { (info: [Any], ack: SocketAckEmitter) in
+            
+            if let (data , err, callback) = self.praseResponseData(info: info) {
+                if let complete = callback as? (GroupModel?, Error?) -> Void {
+                    
+                    var groupModel: GroupModel? = nil
+                    if err == nil && data != nil {
+                        
+                        if let groupInfo = data as? [String : Any] {
+                            groupModel = GroupModel(info: groupInfo)
+                        }
+                    }
+                    
+                    complete(groupModel,err)
                 }
             }
         })
@@ -108,6 +130,10 @@ open class GroupService: NSObject {
             "groupHeadImage" : groupHeadImage == nil ? groupHeadImage! : "",
             "creator" : creator
             ], eventName: "updateGroupInfo", complete: complete)
+    }
+    
+    open func queryGroupInfo(groupId: String, complete: @escaping (GroupModel?, Error?) -> Void) {
+        send(data: ["groupId" : groupId], eventName: "queryGroupInfo", complete: complete)
     }
     
     open func deleteGroup(groupId: String, complete: @escaping (Error?) -> Void) {

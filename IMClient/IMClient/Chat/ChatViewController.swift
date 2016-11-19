@@ -37,6 +37,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.showKeyboardNoti(noti:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.receiveNewMessage), name: NSNotification.Name(rawValue: MsgService.receiveMessageNotificationName), object: nil)
+        
+        
+        if self.viewModel.sessionModel?.type == SessionType.group {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "详情", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ChatViewController.chatInfoItemPressed))
+        }
     }
     
     func keyboardChange(noti: Notification) {
@@ -101,6 +106,22 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.textView.text = ""
         self.textView.resignFirstResponder()
+    }
+    
+    func chatInfoItemPressed() {
+        if self.viewModel.sessionModel?.type == SessionType.group {
+           
+            GroupService.shareInstance.queryGroupInfo(groupId: self.viewModel.sessionModel!.sessionId, complete: { [unowned self] (groupModel: GroupModel?, error: Error?) in
+                
+                if error == nil {
+                    let controller = GroupInfoViewController()
+                    controller.viewModel = groupModel
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+                
+                
+            })
+        }
     }
 
     // MARK: - UITableView DataSource Delegate
