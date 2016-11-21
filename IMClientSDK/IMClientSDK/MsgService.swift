@@ -94,7 +94,31 @@ open class MsgService: NSObject {
                         
                     }
                     else {
+                        
                         msgModel.insertDB()
+                        
+                        if var sessionModel = self.sessionModel(msgModel: msgModel, isSend: false) {
+                            sessionModel.lastMsgContent = msgModel.contentStr
+                            sessionModel.unreadCount += 1
+                            sessionModel.updateDB()
+                            
+                            self.notificationReceiveNewMsg(msgModel: msgModel, sessionModel: sessionModel)
+                        }
+                        else {
+                            // 本地不存在这个群 去后台请求
+                            GroupService.shareInstance.queryGroupInfo(groupId: msgModel.sessionId!, complete: { [unowned self] (groupModel: GroupModel?, error: Error?) in
+                                
+                                if groupModel != nil {
+                                    var sessionModel = SessionModel(groupModel: groupModel!)
+                                    sessionModel.lastMsgContent = msgModel.contentStr
+                                    sessionModel.unreadCount += 1
+                                    sessionModel.insertDB()
+                                    
+                                    self.notificationReceiveNewMsg(msgModel: msgModel, sessionModel: sessionModel)
+                                }
+                                
+                            })
+                        }
                     }
                 }
             }
