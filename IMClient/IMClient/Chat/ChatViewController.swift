@@ -118,7 +118,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     controller.viewModel = groupModel
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
-                
+                else {
+                    Alert.showError(error: error as! NSError)
+                }
                 
             })
         }
