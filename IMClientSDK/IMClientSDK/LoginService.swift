@@ -28,9 +28,16 @@ open class LoginService: NSObject {
                 
                 // 连接消息服务器
                 
-                MsgService.shareInstance.connect(self.loginInfo!.msgServerAddress!, userId: self.loginInfo!.userId)
+                MsgService.shareInstance.connect(self.loginInfo!.msgServerAddress!, userId: self.loginInfo!.userId, complete: { [unowned self] (error: NSError?) in
+                    
+                    complete(self.loginInfo, error)
+                    
+                })
             }
-            complete(self.loginInfo, error)
+            else {
+                complete(nil, error)
+            }
+            
         }
     }
     

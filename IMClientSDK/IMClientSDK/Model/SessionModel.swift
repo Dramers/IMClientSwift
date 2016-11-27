@@ -81,6 +81,14 @@ extension SessionModel {
     }
     
     func updateDB() {
-        SessionDBModel.updateDB(model: self)
+        
+        if let _ = SessionDBModel.querySession(sessionId: self.sessionId) {
+            SessionDBModel.updateDB(model: self)
+        }
+        else {
+            insertDB()
+        }
+        
+        
     }
 }

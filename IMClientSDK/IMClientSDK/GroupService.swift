@@ -16,8 +16,9 @@ open class GroupService: NSObject {
     
     var tasks: [String : Any] = [:]
     
-    func listenEvent() {
-        MsgService.shareInstance.socket?.on("createGroup", callback: { (info: [Any], ack: SocketAckEmitter) in
+    func listenEvent(socket: SocketIOClient) {
+        socket.off("createGroup")
+        socket.on("createGroup", callback: { (info: [Any], ack: SocketAckEmitter) in
             
             if let (_ , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (Error?) -> Void {
@@ -26,7 +27,8 @@ open class GroupService: NSObject {
             }
         })
         
-        MsgService.shareInstance.socket?.on("queryGroupList", callback: { (info: [Any], ack: SocketAckEmitter) in
+        socket.off("queryGroupList")
+        socket.on("queryGroupList", callback: { (info: [Any], ack: SocketAckEmitter) in
             if let (data , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? ([GroupModel]?, Error?) -> Void {
                     
@@ -47,7 +49,8 @@ open class GroupService: NSObject {
             }
         })
         
-        MsgService.shareInstance.socket?.on("addGroupMembers", callback: { (info: [Any], ack: SocketAckEmitter) in
+        socket.off("addGroupMembers")
+        socket.on("addGroupMembers", callback: { (info: [Any], ack: SocketAckEmitter) in
             if let (_ , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (Error?) -> Void {
                     complete(err)
@@ -55,7 +58,8 @@ open class GroupService: NSObject {
             }
         })
         
-        MsgService.shareInstance.socket?.on("kickGroupMembers", callback: { (info: [Any], ack: SocketAckEmitter) in
+        socket.off("kickGroupMembers")
+        socket.on("kickGroupMembers", callback: { (info: [Any], ack: SocketAckEmitter) in
             if let (_ , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (Error?) -> Void {
                     complete(err)
@@ -63,7 +67,8 @@ open class GroupService: NSObject {
             }
         })
         
-        MsgService.shareInstance.socket?.on("updateGroupInfo", callback: { (info: [Any], ack: SocketAckEmitter) in
+        socket.off("updateGroupInfo")
+        socket.on("updateGroupInfo", callback: { (info: [Any], ack: SocketAckEmitter) in
             if let (_ , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (Error?) -> Void {
                     complete(err)
@@ -71,7 +76,8 @@ open class GroupService: NSObject {
             }
         })
         
-        MsgService.shareInstance.socket?.on("deleteGroup", callback: { (info: [Any], ack: SocketAckEmitter) in
+        socket.off("deleteGroup")
+        socket.on("deleteGroup", callback: { (info: [Any], ack: SocketAckEmitter) in
             if let (_ , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (Error?) -> Void {
                     complete(err)
@@ -81,7 +87,8 @@ open class GroupService: NSObject {
             }
         })
         
-        MsgService.shareInstance.socket?.on("queryGroupInfo", callback: { (info: [Any], ack: SocketAckEmitter) in
+        socket.off("queryGroupInfo")
+        socket.on("queryGroupInfo", callback: { (info: [Any], ack: SocketAckEmitter) in
             
             if let (data , err, callback) = self.praseResponseData(info: info) {
                 if let complete = callback as? (GroupModel?, Error?) -> Void {

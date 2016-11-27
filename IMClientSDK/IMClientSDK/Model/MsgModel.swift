@@ -33,6 +33,20 @@ public struct MsgModel {
         state = 1
     }
     
+    public init(info: [String : Any]) {
+        
+        fromUserId = info["fromUserId"] as! Int
+        toUserId = info["toUserId"] as! Int
+        contentStr = info["contentStr"] as! String
+        msgContentType = info["msgContentType"] as! Int
+        sessionId = info["sessionId"] as? String
+        
+        msgId = info["msgId"] as! String
+        sendDate = Date(timeIntervalSince1970: info["sendDate"] as! TimeInterval)
+        serverReceiveDate = Date(timeIntervalSince1970: info["serverReceiveDate"] as! TimeInterval)
+        state = info["state"] as! Int
+    }
+    
     func toSendData() -> AnyObject {
         var sendData = [
             "fromUserId" : NSNumber(value: fromUserId as Int),

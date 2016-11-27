@@ -55,8 +55,6 @@ class SessionDBModel: NSManagedObject {
                 print(error1)
             }
         }
-        
-        
     }
     
     class func querySession(sessionId: String) -> SessionModel? {
