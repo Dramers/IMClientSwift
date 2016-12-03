@@ -9,14 +9,94 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../IMClientSDK/IMClientSDK/MsgService.swift"
-            timestampString = "501949186.879223"
+            filePath = "../IMClientSDK/IMClientSDK/GroupService.swift"
+            timestampString = "502422536.688021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "connect(_:userId:complete:)"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "listenEvent(socket:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMClientSDK.GroupService.(listenEvent (socket : IMClientSDK.SocketIOClient) -&gt; ()).(closure #10)"
+                  moduleName = "IMClientSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yalin/WorkSpace/Dramer/IMClientSwift/IMClientSDK/IMClientSDK/GroupService.swift"
+                  timestampString = "502424176.674034"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMClientSDK.GroupService.(listenEvent (socket : IMClientSDK.SocketIOClient) -&gt; ()).(closure #10)"
+                  moduleName = "IMClientSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yalin/WorkSpace/Dramer/IMClientSwift/IMClientSDK/IMClientSDK/GroupService.swift"
+                  timestampString = "502424176.675382"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../IMClientSDK/IMClientSDK/GroupService.swift"
+            timestampString = "502422539.732116"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "listenEvent(socket:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMClientSDK.GroupService.(listenEvent (socket : IMClientSDK.SocketIOClient) -&gt; ()).(closure #11)"
+                  moduleName = "IMClientSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yalin/WorkSpace/Dramer/IMClientSwift/IMClientSDK/IMClientSDK/GroupService.swift"
+                  timestampString = "502424176.677932"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IMClientSDK.GroupService.(listenEvent (socket : IMClientSDK.SocketIOClient) -&gt; ()).(closure #11)"
+                  moduleName = "IMClientSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yalin/WorkSpace/Dramer/IMClientSwift/IMClientSDK/IMClientSDK/GroupService.swift"
+                  timestampString = "502424176.679051"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "284">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,60 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../IMClientSDK/IMClientSDK/MsgService.swift"
-            timestampString = "501949194.55449"
+            timestampString = "502424208.488405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "connect(_:userId:complete:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../IMClientSDK/IMClientSDK/MsgService.swift"
-            timestampString = "501949443.628598"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "sendMessage(_:complete:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../IMClientSDK/IMClientSDK/MsgService.swift"
-            timestampString = "501949463.062851"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "notificationReceiveNewMsg(msgModel:sessionModel:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../IMClientSDK/IMClientSDK/MsgService.swift"
-            timestampString = "501949484.054168"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "sendMessage(_:complete:)"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "parseOfflineMsgs(result:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

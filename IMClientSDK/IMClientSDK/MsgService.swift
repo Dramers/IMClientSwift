@@ -60,6 +60,7 @@ open class MsgService: NSObject {
                 if let code = responseInfo["code"] as? Int
                 {
                     if code == 0 {
+                        print("queryOffineMessage responseInfo: \(responseInfo)");
                         let msgModels = self.parseOfflineMsgs(result: responseInfo["result"] as! [Any])
                         self.offlineComplete?(msgModels, nil)
                     }
@@ -162,19 +163,19 @@ extension MsgService {
                         
                     }
                     else if labelName == "deleteGroupNoti" {
-                        
+                        GroupService.shareInstance.deleteGroupNotiReceive(info: content!)
                     }
                     else if labelName == "createGroupNoti" {
-                        
+                        GroupService.shareInstance.createGroupNotiReceive(info: content!)
                     }
                     else if labelName == "groupMembersAddNoti" {
-                        
+                        GroupService.shareInstance.groupMembersAddNotiReceive(info: content!)
                     }
                     else if labelName == "groupMembersDelNoti" {
-                        
+                        GroupService.shareInstance.groupMembersDelNotiReceive(info: content!)
                     }
                     else if labelName == "groupInfoUpdateNoti" {
-                        
+                        GroupService.shareInstance.groupInfoUpdateNotiReceive(info: content!)
                     }
                     else {
                         
