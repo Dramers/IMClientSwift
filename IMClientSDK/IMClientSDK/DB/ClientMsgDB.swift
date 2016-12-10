@@ -33,10 +33,10 @@ class ClientMsgDB: NSObject {
          
          return mergedManagedObjectModel;
          */
-        return NSManagedObjectModel.mergedModel(from: Bundle.allFrameworks)!
+//        return NSManagedObjectModel.mergedModel(from: Bundle.allFrameworks)!
         
-//        let modelURL = Bundle.main.url(forResource: self.storeName, withExtension: "momd")!
-//        return NSManagedObjectModel(contentsOf: modelURL)!
+        let modelURL = Bundle.main.url(forResource: self.storeName, withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
